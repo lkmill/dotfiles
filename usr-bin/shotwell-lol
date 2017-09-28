@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/shotwell -d $HOME/.local/share/shotwell-lol

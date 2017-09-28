@@ -1,0 +1,20 @@
+jump_first g Home
+jump_last G End
+prev_img h BackSpace Left
+next_img l space Right
+scroll_left C-h C-Left KP_Left
+scroll_right C-l C-Right KP_Right
+scroll_up C-k C-Up KP_Up
+scroll_down C-j C-Down KP_Down
+scroll_left_page C-H 1-Left 
+scroll_right_page C-L 1-Right 
+scroll_up_page C-K 1-Up
+scroll_down_page C-J 1-Down
+zoom_in k Up
+zoom_out j Down
+zoom_default asterisk K
+zoom_fit slash J
+menu_up k Up
+menu_down j Down
+menu_parent h Left
+menu_child l Right

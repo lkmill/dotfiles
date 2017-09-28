@@ -1,0 +1,74 @@
+set gui=nonavigation
+
+set hintchars=hjklasdfgyuiopqwertnmzxcvb 
+
+set editor="urxvt -e /usr/bin/nvim"
+
+command gui set gui=navigation
+command nogui set gui=nonavigation
+
+nmap s :open google 
+nmap S :tabopen google 
+
+" previous/next commands
+cmap <C-p> <Up>
+cmap <C-n> <Down>
+
+" for lazy one handed navigation
+nmap < :back<CR>
+nmap > :forward<CR>
+
+" behave the same in swedish layout
+nmap Ö :
+nmap ö ;
+cmap <C-å> <Esc>
+imap <C-å> <Esc>
+vmap <C-å> <Esc>
+
+" important in normal mode for activating links highlighted with search
+" needed to be done seperately otherwise it seems to mute new tabs
+nmap <C-m> <CR>
+imap <C-m> <CR>
+cmap <C-m> <CR>
+vmap <C-m> <CR>
+
+cmap <C-i> <Tab>
+cmap <S-C-i> <S-Tab>
+
+" up and down in list like Ctrl P in vim
+cmap <C-j> <Tab>
+cmap <C-k> <S-Tab>
+
+
+autocmd LocationChange .*                             js modes.passAllKeys = false
+autocmd LocationChange mail\\.google\\.com            js modes.passAllKeys = true
+autocmd LocationChange www\\.google\\.com/calendar    js modes.passAllKeys = true
+
+
+" To Enable map <Space>
+js <<EOM
+window.addEventListener('keypress',function (event) {
+      var code=event.charCode;
+          if ((liberator.mode === modes.INSERT && modes.extended === modes.MENU)
+                ||(liberator.mode ==modes.NORMAL && code==32)
+                ||(liberator.mode ==modes.COMMAND_LINE && code !=32)){
+                  let map = mappings.get(liberator.mode, events.toString(event));
+                  if (map) {
+        event.preventDefault();
+                event.stopPropagation();
+                        map.execute();
+                              
+                  }
+                      
+          }
+            
+    },false);
+EOM
+
+" My Customization
+map <Space> <Leader>
+nmap <Leader>b :b#<CR>
+nmap <Leader><Space> :b#<CR>
+nmap <Space><Space> :b#<CR>
+
+nmap <leader>f :js (function(d,w,p,s,r,t,l){t=(w.screenTop||w.screenY)+50;l=(w.screenX||w.screenLeft)+(w.innerWidth||d.documentElement.offsetWidth||0)/2-s/2;w.__flipboard=w.open('https://share.flipboard.com/bookmarklet/popout?v=2&title='+encodeURIComponent(d.title)+'&url='+encodeURIComponent(w.location.href)+'&t='+p,'__flipboard_flipit','width='+s+',height='+r+',top='+t+',left='+l+',location=yes,resizable=yes,status=no,scrollbars=no,personalbar=no,toolbar=no,menubar=no');s=d.createElement('script');s.setAttribute('type','text/javascript');s.setAttribute('src','https://d2jsycj2ly2vqh.cloudfront.net/bookmarklet/js/popout-helper.min.js?t='+p);d.body.appendChild(s);setTimeout(function(){w.__flipboard.focus()},50);})(document,window,(new%20Date().getTime()),535,565)<CR>

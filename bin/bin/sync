@@ -1,0 +1,208 @@
+#!/bin/sh
+
+function now()
+{
+  echo $(date +%Y-%m-%d\ %H:%M:%S)
+}
+
+FILES_LIST=(
+  .local/share/task/
+  .local/share/shotwell-inspiration/
+  .local/share/shotwell-lol/
+  .local/share/shotwell/
+  .vault/
+  bin/
+  bm/
+  dev/
+  img/
+  jot/
+  lib/
+  mail/
+  own/
+  tcb/
+  usr/
+)
+
+CONFIG_LIST=(
+  .config/MusicBrainz/
+  .config/Thunar/
+  .config/filezilla/
+  .config/gtk-2.0/
+  .config/gtk-3.0/
+  .config/inkscape/
+  .config/mpd/
+  .domainrrc
+  .gimp-2.8/
+  .gtk-bookmarks
+  .gtkrc-2.0
+  .gtkrc-2.0.mine
+  .netrc
+  .mutt/mailboxes
+  .offlineimap/
+  .ssh/config
+  .ssh/known_hosts
+  .vimperator/
+)
+
+LOG_FILE="$HOME/.log/sync.log"
+
+SERVER_ADDRESS='lohfu@loadmaster'
+LOCAL_ROOT=$HOME
+SERVER_ROOT="~/home"
+DRIVE_ROOT="/mnt/backup/home"
+
+RESTORE=false;
+BACKUP=false;
+DRIVE=false;
+
+# -a, --archive archive mode; equals -rlptgoD (no -H,-A,-X)
+PARAMS="rtlDvz"
+
+remote_root=$SERVER_ROOT
+
+LIST=()
+
+while getopts "BRDH:pfscmeaz" opt; do
+  case $opt in
+    "B")
+      # note this does not affect the soft sync
+      BACKUP=true
+      ;;
+    "R")
+      # note this does not affect the soft sync
+      RESTORE=true
+      ;;
+    "H")
+      remote_root=$HOME
+      SERVER_ADDRESS=$OPTARG
+      ;;
+    "D")
+      # remove z from params, IE don't compress
+      PARAMS=${PARAMS:0:-1}
+      remote_root=$DRIVE_ROOT
+      DRIVE=true
+      ;;
+    "s")
+      LIST=( bin/sync );
+      ;;
+    "p")
+      LIST+=(media/photos/);
+      ;;
+    "f")
+      LIST+=("${FILES_LIST[*]}")
+      ;;
+    "c")
+      LIST+=("${CONFIG_LIST[*]}")
+      ;;
+    "m")
+      LIST+=(media/music/)
+      ;;
+    "e")
+      LIST+=(media/ebooks/)
+      ;;
+    "z")
+      LIST+=(media/archives/)
+      ;;
+    "a")
+      LIST+=("${FILES_LIST[*]}")
+      LIST+=(media/ebooks/)
+      LIST+=(media/photos/)
+      LIST+=(media/music/)
+      LIST+=("${CONFIG_LIST[*]}")
+      ;;
+  esac
+done
+
+PARAMS="$PARAMS --delete"
+
+for d in ${LIST[*]}; do
+  echo "" #>> $LOG_FILE
+  if [ $d = ".vault/" ] ; then
+    params=cpgo$PARAMS
+  elif [ $d = "jot/" ] ; then
+    params="pgo$PARAMS --exclude '_*'"
+  elif [ $d = "media/photos/" ] ; then
+    params="$PARAMS"
+  elif [ $d = "media/music/" ] ; then
+    params="$PARAMS"
+  elif [ $d = "media/ebooks/" ] ; then
+    params="$PARAMS --exclude '_*'"
+  else
+    params="pgo$PARAMS";
+  fi
+
+  local_path="$HOME/$d"
+  remote_path="$remote_root/$d"
+
+  error=false
+
+  # Make sure the user has chosen to backup OR restore
+  if $RESTORE && ! $BACKUP ; then
+    # Is restoring...
+
+    # set paths 
+    if $DRIVE ; then
+      paths="$remote_path $local_path"
+    else
+      paths="$SERVER_ADDRESS:$remote_path $local_path"
+    fi
+
+    echo $(now) #>> $LOG_FILE
+    echo "RESTORE: rsync -$params $paths" #>> $LOG_FILE
+    if [[ ( $DRIVE == true && ! -e $remote_path ) || ( $DRIVE == false && ! `ssh ${SERVER_ADDRESS} test -e $remote_path && echo exists` ) ]]; then
+      error=true
+      echo "Source location ($remote_path) does not exist. Do nothing." #>> $LOG_FILE
+    elif [[ ! -e $local_path ]]; then
+      echo "Target does not exist." #>> $LOG_FILE
+
+      if [[ "$d" == */ ]]; then
+        echo "$local_path is a directory, creating target directory." #>> $LOG_FILE;
+        tmp=$local_path
+      else
+        echo "$local_path is file, creating parent directory." #>> $LOG_FILE;
+        tmp=${local_path%\/*} #>> $LOG_FILE
+      fi
+      mkdir -p $tmp #>> $LOG_FILE
+    fi
+  elif $BACKUP && ! $RESTORE ; then
+    # Is backing up
+
+    # set paths 
+    if $DRIVE ; then
+      paths="$local_path $remote_path"
+    else
+      paths="$local_path $SERVER_ADDRESS:$remote_path"
+    fi
+
+    echo $(now) #>> $LOG_FILE
+    echo "BACKUP: rsync -$params $paths" #>> $LOG_FILE
+    ## check for existence of destination
+    if [[ ! -e $local_path ]]; then
+      error=true
+      echo "Source location ($local_path) does not exist. Do nothing." #>> $LOG_FILE
+    elif [[ ( $DRIVE == true && ! -e $remote_path ) || ( $DRIVE != true && ! `ssh ${SERVER_ADDRESS} test -e $remote_path && echo exists` ) ]] ; then
+      echo "Target does not exist." #>> $LOG_FILE
+      if [[ "$d" == */ ]]; then
+        echo "$local_path is a directory, creating target directory." #>> $LOG_FILE;
+        tmp=$remote_path
+      else
+        echo "$local_path is file, creating parent directory." #>> $LOG_FILE;
+        tmp=${remote_path%\/*} #>> $LOG_FILE
+      fi
+      if $DRIVE ; then
+        mkdir -p $tmp
+      else
+        ssh ${SERVER_ADDRESS} mkdir -p $tmp #>> $LOG_FILE;
+      fi
+    fi
+  else
+    echo "You have to choose either backup (-b) OR restore (-r)." #>> $LOG_FILE
+    exit 0
+  fi
+
+  if ! $error ; then
+    eval rsync -$params $paths # >> $LOG_FILE
+  fi
+
+  echo "--------------------------------------------------" #>> $LOG_FILE
+done

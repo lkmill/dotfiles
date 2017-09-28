@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export i3_config_file=$HOME/.config/i3/config
+export WM=i3
+startx

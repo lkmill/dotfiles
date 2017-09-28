@@ -1,0 +1,15 @@
+binlist=(
+  '$HOME/.config/cdm/run-sway'
+  '$HOME/.config/cdm/run-awesome'
+  '$HOME/.config/cdm/run-i3'
+  '$SHELL'
+  '$HOME/.xsession'
+)
+
+namelist=(Sway Awesome i3 Console Xsession)
+
+flaglist=(C C C C X)
+
+dialogrc=/usr/share/cdm/themes/blackandwhite
+
+consolekit=no

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [[ -n $1 ]]; then
+  source_path=$HOME/lib/node/$1
+  target_path=node_modules/$1
+
+  if [[ -e $source_path ]]; then
+    if [[ -e $target_path ]]; then
+      echo $target_path already exists!
+    else
+      if [[ ! -e node_modules ]]; then
+        mkdir node_modules;
+      fi
+
+      ln -s $source_path $target_path
+
+      echo Symlinked $source_path to $target_path
+    fi
+  else
+    echo $source_path does not exist!
+  fi
+fi

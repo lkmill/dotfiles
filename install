@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# stow bash -t ~
+stow bin -t ~
+stow cdm -t ~
+stow eslint -t ~
+stow feh -t ~
+stow git -t ~
+stow i3 -t ~
+stow mutt -t ~
+stow ncmpcpp -t ~
+stow neovim -t ~
+stow npm -t ~
+stow ranger -t ~
+stow task -t ~
+stow tmux -t ~
+stow urxvt -t ~
+stow user-dirs -t ~
+stow vimperator -t ~
+stow zsh -t ~

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sway 2> ~/.log/sway.log

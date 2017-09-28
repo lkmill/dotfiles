@@ -1,0 +1,32 @@
+! vim: set filetype=xdefaults :
+
+! based on my terminal colors, http://dotshare.it/dots/160/
+
+*background: #222222
+*foreground: #E0E3F7
+!*cursorColor: #FDA53C
+
+!black
+*color0: #111111
+*color8: #666666
+!red
+*color1: #D11717
+*color9: #FF7171
+!green
+*color2: #9CD117
+*color10: #B6EC68
+!yellow
+*color3: #D1CE17
+*color11: #FFE863
+!blue
+*color4:     #1794D1
+*color12:    #62A9FF
+!magenta
+*color5: #D11779
+*color13: #DB79DA
+!cyan
+*color6: #17D1B2
+*color14: #3EF4B6
+!white
+*color7: #DDDDDD
+*color15: #CCCCCC

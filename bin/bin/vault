@@ -1,0 +1,51 @@
+#!/bin/sh
+
+PASSWD_PATH=$HOME/jot/_passwd
+PLANS_PATH=$HOME/jot/_plans
+PRIVATE_PATH=$HOME/jot/_private
+
+PASSWD_FILE=$HOME/.vault/passwd.tc
+PLANS_FILE=$HOME/.vault/plans.tc
+PRIVATE_FILE=$HOME/.vault/private.tc
+
+file=
+path=
+
+while getopts ":Dalr" opt; do
+	case $opt in
+		"D")
+			truecrypt -d;
+			rm -r $PASSWD_PATH 2> /dev/null
+			rm -r $PLANS_PATH 2> /dev/null
+			rm -r $PRIVATE_PATH 2> /dev/null
+			echo all volumes dismounted.
+			exit;
+			;;
+		"a")
+			file=$PASSWD_FILE
+			path=$PASSWD_PATH
+			;;
+		"l")
+			file=$PLANS_FILE
+			path=$PLANS_PATH
+			;;
+		"r")
+			file=$PRIVATE_FILE
+			path=$PRIVATE_PATH
+			;;
+	esac
+done
+
+if [ -z $file ] || [ -z $path ] ; then
+	echo -e '\e[31mError\e[0m: Valid options are \e[1;32m-D\e[0m (unmount all), \e[1;32m-a\e[0m (passwd), \e[1;32m-l\e[0m (plans) and \e[1;32m-r\e[0m (private).' 1>&2 
+	#echo -e '\e[31mError\e[0m: Valid options are \e[1;32m-D\e[0m (\e[32munmount all\e[0m), \e[1;32m-a\e[0m (\e[32mpasswd\e[0m), \e[1;32m-l\e[0m (\e[32mplans\e[0m) and \e[1;32m-r\e[0m (\e[32mprivate\e[0m).' 1>&2 
+	exit 2;
+fi
+
+if [[ ! -e $path ]]; then
+	mkdir -p $path
+fi
+
+truecrypt $file $path
+
+echo -e "\e[36m${file}\e[0m mounted at \e[36m$path\e[0m"
