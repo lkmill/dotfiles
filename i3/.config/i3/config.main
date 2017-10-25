@@ -134,16 +134,6 @@ set $ws10 0
 set $ws-music music
 set $ws-xtra xtra
 
-#set $left-display DP-0
-set $main-display DVI-I-1
-set $right-display DVI-D-0
-
-#set $main-display DVI-I-2
-#set $right-display DVI-I-3
-
-# set $main-display HDMI1
-# set $right-display VGA1
-
 workspace $ws1 output $main-display
 workspace $ws2 output $main-display
 workspace $ws3 output $main-display

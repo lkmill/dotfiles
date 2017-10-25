@@ -1,14 +1,13 @@
 binlist=(
-  '$HOME/.config/cdm/run-sway'
-  '$HOME/.config/cdm/run-awesome'
   '$HOME/.config/cdm/run-i3'
+  '$HOME/.config/cdm/run-awesome'
   '$SHELL'
   '$HOME/.xsession'
 )
 
-namelist=(Sway Awesome i3 Console Xsession)
+namelist=(i3 Awesome Console Xsession)
 
-flaglist=(C C C C X)
+flaglist=(C C C X)
 
 dialogrc=/usr/share/cdm/themes/blackandwhite
 

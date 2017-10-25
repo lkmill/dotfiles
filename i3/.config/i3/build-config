@@ -1,0 +1,9 @@
+#!/bin/sh
+
+dir=$(readlink -f ~/.config/i3)
+file=$dir/config
+
+echo "set \$main-display $x_display_main" > $file
+echo "set \$right-display $x_display_right" >> $file
+
+cat $dir/config.main >> $file
