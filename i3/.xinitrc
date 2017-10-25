@@ -20,13 +20,13 @@ if [ -s ~/.Xcolors/gruvbox ]; then
 	xrdb -merge ~/.Xcolors/gruvbox
 fi
 
-if [ -s ~/img/wallpapers/2560x1440/614437-anime-artwork-fantasy-art-grass-howls-moving-castle-landscapes-nature-running-skies-steam-steampunk.jpg ]; then
-  feh --bg-fill ~/img/wallpapers/2560x1440/614437-anime-artwork-fantasy-art-grass-howls-moving-castle-landscapes-nature-running-skies-steam-steampunk.jpg
-fi
-
 # update X font locations
 xset +fp /usr/share/fonts/local
 xset fp rehash
+
+source ~/bin/set-screens
+
+~/.fehbg
 
 echo ".xinitrc" >> ~/.log/xinitrc.log
 
