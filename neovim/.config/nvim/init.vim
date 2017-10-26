@@ -218,6 +218,7 @@ nnoremap <leader>/ :nohl<CR>
 
 " mappings > fugitive
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
 
 " mappings > editing and sourcing vim configs
 nnoremap <leader>vr :e ~/.config/nvim/init.vim<CR>
