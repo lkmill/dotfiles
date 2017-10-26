@@ -51,7 +51,12 @@ alias steam-wine=' WINEARCH=win32 wine ~/.wine/drive_c/Program\ Files/Steam/Stea
 alias set-screens-lysvik='xrandr --output eDP1 --off --output HDMI1 --primary --left-of VGA1'
 # alias set-screens-bosse='xrandr --output HDMI-0 --rotate right --pos 0x0 --output DVI-I-1 --primary --pos 1050x300 --output DVI-D-0 --right-of DVI-I-1'
 alias set-screens-bosse='xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto' 
-alias set-screens-cybercom='xrandr --output DP1 --auto --output eDP1 --off'
+#alias set-screens-cybercom='xrandr --output DP1 --auto --output eDP1 --off'
+alias set-screens-cybercom='xrandr --output DP1-2 --primary --auto --output DP1-1 --off --output eDP1 --auto --right-of DP1-2'
+#alias set-screens-cybercom='xrandr --output DP-1-2 --primary --auto --output DP-1-1 --off --output eDP-1 --right-of DP-1-2 --auto'
+#alias set-screens-cybercom='xrandr --output DP1-2 --primary --auto --output DP1-1 --auto --right-of DP1-2 --output eDP1 --off'
+#alias set-screens-cybercom='xrandr --output DP1-2 --primary --auto --output DP1-1 --auto --right-of DP1-2 --output eDP1 --off'
+alias set-screens-laptop='xrandr --output DP1-1 --off --output DP1 --off --output DP1-2 --off --output eDP1 --auto'
 #LC_ALL=c sorts hidden files first (and is case insensitive, unfortunately)
 alias ls='LC_ALL=C ls --color=auto'
 alias grep='grep --color=auto'
