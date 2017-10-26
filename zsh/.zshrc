@@ -35,15 +35,15 @@ ZLE_REMOVE_SUFFIX_CHARS=""
 # see https://stackoverflow.com/questions/37772712/zsh-how-to-make-tab-completion-need-no-space-to-next-word-after-cursor
 bindkey '^i' expand-or-complete-prefix
 
-ZSH_THEME_GIT_PROMPT_PREFIX="["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+ZSH_THEME_GIT_PROMPT_PREFIX="."
+ZSH_THEME_GIT_PROMPT_SUFFIX="."
 ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{ߦ%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{ߦ%G%}"
 autoload -U colors && colors
 #PS1='%{$fg[blue]%}┌─ %F{8}%D{%H:%M:%S} %{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ % %b$(git_super_status)
-PS1='%{$fg[blue]%}┌─ %{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ % %b$(git_super_status)
-%{$fg[blue]%}└─[%{$fg_bold[green]%}\$%{$fg_no_bold[blue]%}] %{$reset_color%}'
+PS1='%{$fg[blue]%}┌ %{$fg[red]%}%n%{$reset_color%}.%{$fg[blue]%}%m %{$fg[green]%}%~ % %b$(git_super_status)
+%{$fg[blue]%}└─ %{$reset_color%}'
 
 # Alias
 alias steamed='LD_PRELOAD="/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so" /usr/bin/steam'
