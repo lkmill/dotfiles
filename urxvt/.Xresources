@@ -15,7 +15,7 @@ URxvt.scrollBar: false
 
 rofi.color-enabled: true
 rofi.color-window: #202020, #202020, #202020
-rofi.color-normal: argb:0202020, #fafafa, #202020, #303030, #ffffff
+rofi.color-normal: #202020, #fafafa, #202020, #303030, #ffffff
 rofi.color-active: #303030, #ffffff, #303030, #303030, #ffffff
 rofi.color-urgent: #202020, #ffffff, #202020, #202020, #ffffff
 
@@ -30,3 +30,14 @@ rofi.separator-style: none
 rofi.display-run: Run
 rofi.display-drun: Launch
 rofi.terminal: sakura
+
+! "Select previous entry" Set from: Default
+rofi.kb-row-up:                      Control+k,Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab
+! "Select next entry" Set from: Default
+rofi.kb-row-down:                    Control+j,Down,Control+n
+! "Accept entry" Set from: Default
+rofi.kb-accept-entry:                Control+m,Return,KP_Enter
+! "Delete till the end of line" Set from: Default
+rofi.kb-remove-to-eol:               
+
+
