@@ -20,6 +20,11 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 # Fish-like Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# FZF 
+FZF_CTRL_R_OPTS='--reverse'
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
 alias mb='touch "$(date +%Y%m%d_%H%M%S_%Z).md"'
 
 # Autopairs
