@@ -24,7 +24,6 @@ alias mb='touch "$(date +%Y%m%d_%H%M%S_%Z).md"'
 
 # Autopairs
 source $HOME/.zsh/autopair.zsh
-
 source $HOME/.zsh/zsh-git-prompt.zsh
 
 # Settings
@@ -35,14 +34,15 @@ ZLE_REMOVE_SUFFIX_CHARS=""
 # see https://stackoverflow.com/questions/37772712/zsh-how-to-make-tab-completion-need-no-space-to-next-word-after-cursor
 bindkey '^i' expand-or-complete-prefix
 
-ZSH_THEME_GIT_PROMPT_PREFIX="."
-ZSH_THEME_GIT_PROMPT_SUFFIX="."
-ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{ߦ%G%}"
-ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{ߦ%G%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_SEPARATOR=":"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 autoload -U colors && colors
 #PS1='%{$fg[blue]%}┌─ %F{8}%D{%H:%M:%S} %{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ % %b$(git_super_status)
-PS1='%{$fg[blue]%}┌ %{$fg[red]%}%n%{$reset_color%}.%{$fg[blue]%}%m %{$fg[green]%}%~ % %b$(git_super_status)
+PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg[red]%}%m %{$fg[yellow]%}%~% %b $(git_super_status)
 %{$fg[blue]%}└─ %{$reset_color%}'
 
 # Alias
