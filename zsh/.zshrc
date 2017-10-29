@@ -10,6 +10,7 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
 setopt appendhistory notify
 unsetopt autocd beep extendedglob nomatch
 bindkey -e
@@ -24,6 +25,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 FZF_CTRL_R_OPTS='--reverse'
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
+source $HOME/.zsh/fzf-git.zsh
 
 alias mb='touch "$(date +%Y%m%d_%H%M%S_%Z).md"'
 
