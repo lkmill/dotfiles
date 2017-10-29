@@ -66,6 +66,7 @@ alias set-screens-laptop='xrandr --output DP1-1 --off --output DP1 --off --outpu
 alias ls='LC_ALL=C ls --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
+alias ze='vim $HOME/.zshrc'
 alias zs='source $HOME/.zshrc'
 #alias jcurl='curl -H "Content-type: application/json"'
 alias xsel='xsel --logfile $HOME/.log/xsel.log'
