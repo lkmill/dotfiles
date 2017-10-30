@@ -44,12 +44,16 @@ bindkey '^i' expand-or-complete-prefix
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=":"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[green]%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg_bold[red]%}%{X%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[red]%}%{-%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[green]%}%{+%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 autoload -U colors && colors
-#PS1='%{$fg[blue]%}┌─ %F{8}%D{%H:%M:%S} %{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ % %b$(git_super_status)
-PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg[red]%}%m %{$fg[yellow]%}%~% %b $(git_super_status)
+#PS1='%{$fg[blue]%}┌─ %F{8}%D{%H:%M:%S} %{$fg[blue]%}%n%{$reset_color%}.%{$fg[red]%}%m %{$fg[yellow]%}%~ % %b$(git_super_status)
+PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg[green]%}%m%{$reset_color%} %{$fg[white]%}%~% %b $(git_super_status)
 %{$fg[blue]%}└─ %{$reset_color%}'
 
 # Alias
@@ -83,7 +87,7 @@ alias smt='sshfs master@loadmaster:/mnt/torrents /mnt/torrents'
 alias smtl='sshfs master@192.168.1.60:/mnt/torrents /mnt/torrents'
 alias pj='jq "."'
 jcurl() {
-  curl -H "Accept: application/json" "$@" | jq '.'
+   curl -H "Accept: application/json" "$@" | jq '.'
 }
 alias mouse-left='xmodmap -e "pointer = 3 2 1"'
 alias mouse-right='xmodmap -e "pointer = 1 2 3"'
