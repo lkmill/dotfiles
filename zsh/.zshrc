@@ -4,6 +4,7 @@ zstyle :compinstall filename '/home/lohfu/.zshrc'
 autoload -Uz compinit
 compinit
 
+KEYTIMEOUT=80
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
