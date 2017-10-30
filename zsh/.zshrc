@@ -176,3 +176,11 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # https://wiki.archlinux.org/index.php/Zsh#Configuring_.24PATH
 export PATH="$HOME/bin:/$HOME/node_modules/.bin:$PATH"
+
+# Neovim does not reset the terminal title on exits
+# https://github.com/neovim/neovim/issues/7129
+function precmd() {
+   echo -en "\e]0;urxvt\a"
+}
+
+
