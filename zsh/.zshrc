@@ -4,13 +4,15 @@ zstyle :compinstall filename '/home/lohfu/.zshrc'
 autoload -Uz compinit
 compinit
 
-KEYTIMEOUT=80
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 
 setopt appendhistory notify
 unsetopt autocd beep extendedglob nomatch
