@@ -113,33 +113,8 @@ let g:tern_show_signature_in_pum = 0
 let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx"
 
 
-":: plugins > SYNTASTIC
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_less_checkers = ['lessc']
-"let g:syntastic_less_lessc_args = '--no-color --include-path=node_modules/spineless/less'
-
-" --files: List files that would be searched but do not search
-" --no-ignore: Do not respect .gitignore, etc...
-" --hidden: Search hidden files and folders
-" --follow: Follow symlinks
-" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git/*' --glob '!*.png' --glob '!*.jpg'"
-
-"let $FZF_DEFAULT_COMMAND=''
-
 ":: plugin > MatchTagAlways
-"
+
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 let g:mta_filetypes = { 'javascript.jsx': 1, 'html' : 1, 'marko' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1, }
@@ -147,7 +122,6 @@ let g:mta_filetypes = { 'javascript.jsx': 1, 'html' : 1, 'marko' : 1, 'xhtml' : 
 nnoremap <leader>5 :MtaJumpToOtherTag<cr>
 
 let g:tmux_navigator_no_mappings = 1
-
 nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
@@ -287,7 +261,8 @@ autocmd FileType text setl nosmartindent
 autocmd FileType xf86conf setl tabstop=8 shiftwidth=8 softtabstop=8 expandtab
 autocmd FileType nginx setl tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-":: 
+":: FZF
+" 
 " from https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 "
 " --column: Show column number
@@ -302,6 +277,14 @@ autocmd FileType nginx setl tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 " --color: Search color options
 "
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+" --files: List files that would be searched but do not search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git/*' --glob '!*.png' --glob '!*.jpg'"
 
 ":: Ranger
 
