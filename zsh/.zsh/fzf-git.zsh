@@ -24,9 +24,8 @@ __fzf_git_branch() {
   echo $branch
 }
 
-fzf_branch_widget() {
-  local branch
 
+fzf_branch_widget() {
   LBUFFER="${LBUFFER}$(__fzf_git_branch)"
 
   local ret=$?
@@ -74,6 +73,73 @@ fgr() {
   git rebase $(__git_branch)
 }
 
+# example usage: git rebase -i `fcs`
+# fcs - get git commit sha
+__fzf_git_commit() {
+  local branch branches commits commit
+
+  while getopts "-rl" opt; do
+    case $opt in
+      "r")
+         branch="$(__fzf_git_branch -r)"
+         ;;
+      "l")
+         branch="$(__fzf_git_branch -l)"
+         ;;
+    esac
+  done
+
+  if [ -z "$branch" ]; then
+     branch=$(git rev-parse --abbrev-ref HEAD)
+  fi
+
+
+  branch=$(echo "$branch" | sed "s/.* //")
+
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse --branches "$branch") &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+
+  echo -n $(echo "$commit" | sed "s/ .*//")
+}
+
+fzf_commit_current_branch_widget() {
+  LBUFFER="${LBUFFER}$(__fzf_git_commit -b)"
+
+  local ret=$?
+
+  zle redisplay
+
+  return $ret
+}
+
+fzf_commit_local_branches_widget() {
+  LBUFFER="${LBUFFER}$(__fzf_git_commit -l)"
+
+  local ret=$?
+
+  zle redisplay
+
+  return $ret
+}
+
+fzf_commit_remote_branches_widget() {
+  LBUFFER="${LBUFFER}$(__fzf_git_commit -r)"
+
+  local ret=$?
+
+  zle redisplay
+
+  return $ret
+}
+
+zle     -N   fzf_commit_current_branch_widget
+zle     -N   fzf_commit_local_branches_widget
+zle     -N   fzf_commit_remote_branches_widget
+
+bindkey '^Oc' fzf_commit_current_branch_widget
+bindkey '^Ocb' fzf_commit_current_branch_widget
+bindkey '^Ocl' fzf_commit_local_branches_widget
+bindkey '^Ocr' fzf_commit_remote_branches_widget
 
 ## FZF search through chromium history
 fw() {
