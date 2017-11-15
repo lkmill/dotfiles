@@ -26,7 +26,7 @@ __fzf_git_branch() {
 
 
 fzf_branch_widget() {
-  LBUFFER="${LBUFFER}$(__fzf_git_branch)"
+  LBUFFER="${LBUFFER}$(__fzf_git_branch -r)"
 
   local ret=$?
 
@@ -43,35 +43,50 @@ bindkey '^O^F' fzf-file-widget
 
 # checkout a local branch
 fgc() {
-  local cmd="git checkout $(__git_branch)"
-
+  local cmd="git checkout $(__fzf_git_branch)"
 
   eval $cmd
 
-    # rest is supposedly "default" zshaddhistory() (except it ain't)
   print -Sr ${cmd}
 }
 
 
 # checkout any branch
 fgca() {
-  git checkout $(__git_branch -a)
+  local cmd="git checkout $(__fzf_git_branch -a)"
+
+  eval $cmd
+
+  print -Sr ${cmd}
 }
 
 # checkout a remote branch
 fgcr() {
-  git checkout $(__git_branch -r)
+  local cmd="git checkout $(__fzf_git_branch -r)"
+
+  eval $cmd
+
+  print -Sr ${cmd}
 }
 
 # merge with a local branch
 fgm() {
-  git merge $(__git_branch)
+  local cmd="git merge $(__fzf_git_branch)"
+
+  eval $cmd
+
+  print -Sr ${cmd}
 }
 
 # rebase againts a local branch
 fgr() {
-  git rebase $(__git_branch)
+  local cmd="git rebase $(__fzf_git_branch)"
+
+  eval $cmd
+
+  print -Sr ${cmd}
 }
+
 
 # example usage: git rebase -i `fcs`
 # fcs - get git commit sha
