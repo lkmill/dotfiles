@@ -172,6 +172,21 @@ bindsym $hyper+a workspace $ws-music
 bindsym $hyper+m workspace $ws-music
 bindsym $hyper+x workspace $ws-xtra
 
+bindsym $mod+$alt+w workspace $ws1
+bindsym $mod+$alt+c workspace $ws2
+bindsym $mod+$alt+e workspace $ws3
+bindsym $mod+$alt+v workspace $ws3
+bindsym $mod+$alt+t workspace $ws4
+bindsym $mod+$alt+f workspace $ws5
+bindsym $mod+$alt+j workspace $ws6
+bindsym $mod+$alt+z workspace $ws6
+bindsym $mod+$alt+g workspace $ws7
+bindsym $mod+$alt+s workspace $ws8
+
+bindsym $mod+$alt+a workspace $ws-music
+bindsym $mod+$alt+m workspace $ws-music
+bindsym $mod+$alt+x workspace $ws-xtra
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -198,7 +213,6 @@ bindsym $hyper+Shift+s move container to workspace $ws8
 bindsym $hyper+Shift+a move container to workspace $ws-music
 bindsym $hyper+Shift+m move container to workspace $ws-music
 bindsym $hyper+Shift+x move container to workspace $ws-xtra
-
 
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$right focus output right
