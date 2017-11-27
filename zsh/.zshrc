@@ -52,7 +52,7 @@ bindkey '^i' expand-or-complete-prefix
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_SEPARATOR=":"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[green]%}"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[default]%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg_bold[red]%}%{X%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{%G%}"
