@@ -111,7 +111,7 @@ __fzf_git_commit() {
 
   branch=$(echo "$branch" | sed "s/.* //")
 
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse --branches "$branch") &&
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse "$branch" --) &&
   commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
 
   echo -n $(echo "$commit" | sed "s/ .*//")
