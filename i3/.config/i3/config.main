@@ -279,8 +279,9 @@ bindsym $mod+Shift+Next exec "mpc next"
 bindsym $mod+Shift+Prior exec "mpc prev"
 bindsym Pause exec "mpc toggle"
 
-bindsym $mod+Pause exec "systemctl suspend"
-bindsym XF86Sleep exec "systemctl suspend"
+bindsym $mod+Pause exec "i3lock -c 282828"
+bindsym Shift+$mod+Pause exec "i3lock -c 282828 && systemctl suspend"
+bindsym XF86Sleep exec "i3lock -c 282828 && systemctl suspend"
 
 bindsym Print exec "scrot -e 'mv $f ~/img/screenshots/ 2>/dev/null'"
 bindsym $mod+Print exec "scrot -ue 'mv $f ~/img/screenshots/ 2>/dev/null'"
