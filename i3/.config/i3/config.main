@@ -217,6 +217,9 @@ bindsym $hyper+Shift+x move container to workspace $ws-xtra
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$right focus output right
 
+bindsym $mod+Shift+Ctrl+$left move workspace to output left
+bindsym $mod+Shift+Ctrl+$right move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c exec ~/.config/i3/build-config; reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
