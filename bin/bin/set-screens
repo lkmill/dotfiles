@@ -20,8 +20,8 @@ case "$(hostname)" in
     export x_display_right="DP-3"
     ;;
   "lou")
-    xrandr --output DP1-1 --off --output DP1-2 --primary --auto --output DP1-3 --off --output eDP1 --right-of DP1-2 --auto
-    export x_display_main="DP1-2"
+    #xrandr --output DP1-1 --off --output DP1-2 --primary --auto --output DP1-3 --off --output eDP1 --right-of DP1-2 --auto
+    export x_display_main="eDP1"
     export x_display_right="eDP1"
     ;;
 esac
