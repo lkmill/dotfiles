@@ -125,8 +125,12 @@ alias restore='$HOME/bin/sync -cfR'
 # Alias > NPM
 
 alias ni='npm install'
+alias nid='npm install --save-dev'
+alias nis='npm install --save'
 alias nr='npm run'
 alias nu='npm uninstall'
+alias nud='npm uninstall --save-dev'
+alias nus='npm uninstall --save'
 alias nU='npm update'
 
 # Alias > Task
