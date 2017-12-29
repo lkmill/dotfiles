@@ -5,3 +5,5 @@ neovim/.config/*
 neovim/.config/.*
 !neovim/.config/init.vim
 
+tmux/.tmux/plugins
+!tmux/.tmux/plugins/tpm
