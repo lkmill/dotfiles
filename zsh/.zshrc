@@ -90,7 +90,7 @@ alias ngrep='grep --exclude-dir=.git/ --exclude-dir node_modules/ -r'
 
 # Alias > screen layouts
 
-alias set-screens-bosse='xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto' 
+alias set-screens-bosse='xrandr --output DVI-I-1 --primary --auto --output DP-1 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto' 
 alias set-screens-cybercom='xrandr --output DP1-2 --primary --auto --output DP1-1 --off --output eDP1 --auto --right-of DP1-2'
 alias set-screens-laptop='xrandr --output DP1-1 --off --output DP1 --off --output DP1-2 --off --output eDP1 --auto'
 alias set-screens-lou-lysvik='xrandr --output DP1-1 --auto --primary --output DP1-2 --off --output DP1-3 --auto --right-of DP1-1 --output eDP1 --off'

@@ -8,8 +8,8 @@ case "$(hostname)" in
     export x_display_right="DVI-I-1"
     ;;
   "bosse")
-    xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto
-    export x_display_left="DP-0"
+    xrandr --output DVI-I-1 --primary --auto --output DP-1 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto
+    export x_display_left="DP-1"
     export x_display_main="DVI-I-1"
     export x_display_right="DVI-D-0"
     ;;
