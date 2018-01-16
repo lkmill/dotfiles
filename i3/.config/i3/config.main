@@ -121,9 +121,9 @@ bindsym $mod+Tab workspace back_and_forth
 
 set $ws1 1:www
 set $ws2 2:chat
-set $ws3 3:vim
+set $ws3 3:editor
 set $ws4 4:term
-set $ws5 5:fs
+set $ws5 5:files
 set $ws6 6:jot
 set $ws7 7:gra
 set $ws8 8:staging
@@ -132,6 +132,7 @@ set $ws10 0
 
 set $ws-music music
 set $ws-xtra xtra
+set $ws-vm vm
 
 workspace $ws1 output $main-display
 workspace $ws2 output $main-display
@@ -143,8 +144,10 @@ workspace $ws7 output $main-display
 workspace $ws8 output $main-display
 workspace $ws9 output $main-display
 workspace $ws10 output $main-display
+
 workspace $ws-music output $right-display
 workspace $ws-xtra output $right-display
+workspace $ws-vm output $right-display
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -160,7 +163,6 @@ bindsym $mod+0 workspace $ws10
 bindsym $hyper+w workspace $ws1
 bindsym $hyper+c workspace $ws2
 bindsym $hyper+e workspace $ws3
-bindsym $hyper+v workspace $ws3
 bindsym $hyper+t workspace $ws4
 bindsym $hyper+f workspace $ws5
 bindsym $hyper+j workspace $ws6
@@ -171,11 +173,11 @@ bindsym $hyper+s workspace $ws8
 bindsym $hyper+a workspace $ws-music
 bindsym $hyper+m workspace $ws-music
 bindsym $hyper+x workspace $ws-xtra
+bindsym $hyper+v workspace $ws-vm
 
 bindsym $mod+$alt+w workspace $ws1
 bindsym $mod+$alt+c workspace $ws2
 bindsym $mod+$alt+e workspace $ws3
-bindsym $mod+$alt+v workspace $ws3
 bindsym $mod+$alt+t workspace $ws4
 bindsym $mod+$alt+f workspace $ws5
 bindsym $mod+$alt+j workspace $ws6
@@ -186,6 +188,7 @@ bindsym $mod+$alt+s workspace $ws8
 bindsym $mod+$alt+a workspace $ws-music
 bindsym $mod+$alt+m workspace $ws-music
 bindsym $mod+$alt+x workspace $ws-xtra
+bindsym $mod+$alt+v workspace $ws-vm
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -202,7 +205,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $hyper+Shift+w move container to workspace $ws1
 bindsym $hyper+Shift+c move container to workspace $ws2
 bindsym $hyper+Shift+e move container to workspace $ws3
-bindsym $hyper+Shift+v move container to workspace $ws3
 bindsym $hyper+Shift+t move container to workspace $ws4
 bindsym $hyper+Shift+f move container to workspace $ws5
 bindsym $hyper+Shift+j move container to workspace $ws6
@@ -213,6 +215,24 @@ bindsym $hyper+Shift+s move container to workspace $ws8
 bindsym $hyper+Shift+a move container to workspace $ws-music
 bindsym $hyper+Shift+m move container to workspace $ws-music
 bindsym $hyper+Shift+x move container to workspace $ws-xtra
+bindsym $hyper+Shift+v move container to workspace $ws-vm
+
+## 
+#
+bindsym $mod+$al+Shift+w move container to workspace $ws1
+bindsym $mod+$alt+Shift+c move container to workspace $ws2
+bindsym $mod+$alt+Shift+e move container to workspace $ws3
+bindsym $mod+$alt+Shift+t move container to workspace $ws4
+bindsym $mod+$alt+Shift+f move container to workspace $ws5
+bindsym $mod+$alt+Shift+j move container to workspace $ws6
+bindsym $mod+$alt+Shift+z move container to workspace $ws6
+bindsym $mod+$alt+Shift+g move container to workspace $ws7
+bindsym $mod+$alt+Shift+s move container to workspace $ws8
+
+bindsym $mod+$alt+Shift+a move container to workspace $ws-music
+bindsym $mod+$alt+Shift+m move container to workspace $ws-music
+bindsym $mod+$alt+Shift+x move container to workspace $ws-xtra
+bindsym $mod+$alt+Shift+v move container to workspace $ws-vm
 
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$right focus output right
