@@ -48,6 +48,7 @@ ZLE_REMOVE_SUFFIX_CHARS=""
 
 # see https://stackoverflow.com/questions/37772712/zsh-how-to-make-tab-completion-need-no-space-to-next-word-after-cursor
 bindkey '^i' expand-or-complete-prefix
+bindkey '^u' backward-kill-line
 
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
