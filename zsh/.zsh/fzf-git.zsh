@@ -26,6 +26,16 @@ __fzf_git_branch() {
 
 
 fzf_branch_widget() {
+  LBUFFER="${LBUFFER}$(__fzf_git_branch -l)"
+
+  local ret=$?
+
+  zle redisplay
+
+  return $ret
+}
+
+fzf_branch_remote_widget() {
   LBUFFER="${LBUFFER}$(__fzf_git_branch -r)"
 
   local ret=$?
@@ -35,10 +45,29 @@ fzf_branch_widget() {
   return $ret
 }
 
+fzf_branch_all_widget() {
+  LBUFFER="${LBUFFER}$(__fzf_git_branch -a)"
+
+  local ret=$?
+
+  zle redisplay
+
+  return $ret
+}
+
 zle     -N   fzf_branch_widget
+zle     -N   fzf_branch_remote_widget
+zle     -N   fzf_branch_all_widget
 
 bindkey '^Ob' fzf_branch_widget
 bindkey '^O^B' fzf_branch_widget
+bindkey '^Obl' fzf_branch_widget
+bindkey '^O^B^L' fzf_branch_widget
+bindkey '^Obr' fzf_branch_remote_widget
+bindkey '^O^B^R' fzf_branch_remote_widget
+bindkey '^Oba' fzf_branch_all_widget
+bindkey '^O^B^A' fzf_branch_all_widget
+
 bindkey '^O^F' fzf-file-widget
 
 # checkout a local branch
