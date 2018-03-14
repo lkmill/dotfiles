@@ -237,6 +237,7 @@ command! Js set filetype=javascript
 command! Css set filetype=css
 command! Markdown set filetype=markdown
 
+au BufRead,BufNewFile *.mjs setl filetype=javascript
 au BufRead,BufNewFile .vimperatorrc setl filetype=vim
 au BufRead,BufNewFile .eslintrc setl filetype=json
 au BufRead,BufNewFile .babelrc setl filetype=json
