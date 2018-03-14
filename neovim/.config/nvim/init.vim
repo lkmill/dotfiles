@@ -191,8 +191,10 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>/ :nohl<CR>
 
 " mappings > fugitive
+nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gB :Gblame w<CR>
 
 " mappings > editing and sourcing vim configs
 nnoremap <leader>vr :e ~/.config/nvim/init.vim<CR>
