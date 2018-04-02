@@ -1,34 +1,58 @@
-# Sat 16 Dec 11:13:55 CET 2017
-# from https://github.com/ranger/ranger/wiki/Commands#fzf-integration
-
+import subprocess
+import os.path
 from ranger.api.commands import Command
 
-class fzf_select(Command):
-    """
-    :fzf_select
+def fzf (fm, list_command):
+    command = list_command + " | fzf +m"
+    
+    proc = fm.execute_command(command, stdout=subprocess.PIPE)
 
-    Find a file using fzf.
+    stdout, stderr = proc.communicate()
 
-    With a prefix argument select only directories.
+    if proc.returncode == 0:
+        result = stdout.decode('utf-8').rstrip('\n')
+        return result
 
-    See: https://github.com/junegunn/fzf
-    """
+class fzf_select (Command):
     def execute(self):
-        import subprocess
-        import os.path
-        if self.quantifier:
-            # match only directories
-            command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-            -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
+        arg = self.arg(1)
+
+        if (arg):
+            if arg in self.fm.bookmarks:
+                root_dir = self.fm.bookmarks[arg].realpath
+            elif os.path.isdir(arg):
+                root_dir = arg
+            elif os.path.isfile(arg):
+                root_dir = os.path.dirname(arg)
         else:
-            # match files and directories
-            command="find -L . \( -path '*/\.*' -o -fstype 'dev' -o -fstype 'proc' \) -prune \
-            -o -print 2> /dev/null | sed 1d | cut -b3- | fzf +m"
-        fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
-        stdout, stderr = fzf.communicate()
-        if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
-            if os.path.isdir(fzf_file):
-                self.fm.cd(fzf_file)
+            root_dir = self.fm.thisdir.realpath
+
+        command = self.get_command(root_dir)
+        
+        result = fzf (self.fm, command)
+
+        if result:
+            abs_path = os.path.join(root_dir, result)
+
+            if os.path.isdir(abs_path):
+                self.fm.cd(abs_path)
             else:
-                self.fm.select_file(fzf_file)
+                self.fm.select_file(abs_path)
+
+    def get_command(self, root_dir):
+        cut = len(root_dir) + 2
+
+        return "fd --hidden --follow --exclude '.git' '' " + root_dir + "| cut -b" + str(cut) + "-"
+
+
+class fzf_select_file (fzf_select):
+    def get_command(self, root_dir):
+        cut = len(root_dir) + 2
+
+        return "fd --type f --hidden --follow --exclude '.git' '' " + root_dir + "| cut -b" + str(cut) + "-"
+
+class fzf_select_directory (fzf_select):
+    def get_command(self, root_dir):
+        cut = len(root_dir) + 2
+
+        return "fd --type d --hidden --follow --exclude '.git' '' " + root_dir + "| cut -b" + str(cut) + "-"
