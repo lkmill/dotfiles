@@ -110,7 +110,7 @@ let g:deoplete#auto_refresh_delay = 0
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = 0
 
-let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx"
+let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs"
 
 
 ":: plugin > MatchTagAlways
@@ -243,6 +243,7 @@ au BufRead,BufNewFile .eslintrc setl filetype=json
 au BufRead,BufNewFile .babelrc setl filetype=json
 au BufRead,BufNewFile *.md setl filetype=markdown
 au BufRead,BufNewFile *.dust setl filetype=dustjs
+au BufRead,BufNewFile *.ejs setl filetype=html
 au BufRead,BufNewFile *.marko setl filetype=html
 au BufRead,BufNewFile *.dust.html setl filetype=dustjs
 au BufNewFile,BufRead *.tag setlocal ft=javascript
