@@ -75,6 +75,8 @@ alias steam-wine=' WINEARCH=win32 wine ~/.wine/drive_c/Program\ Files/Steam/Stea
 alias steamed='LD_PRELOAD="/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so" /usr/bin/steam'
 alias mouse-left='xmodmap -e "pointer = 3 2 1"'
 alias mouse-right='xmodmap -e "pointer = 1 2 3"'
+alias fchmod='find . -type f -exec chmod 644 {} \;'
+alias dchmod='find . -type d -exec chmod 755 {} \;'
 
 # Alias > ZSH
 
