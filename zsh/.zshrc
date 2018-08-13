@@ -101,13 +101,12 @@ alias set-screens-lysvik='xrandr --output eDP1 --off --output HDMI1 --primary --
 
 # Alias > SSH Mounting
 
-alias sme='sshfs lohfu@loadmaster:/mnt/ext02/ebooks /mnt/ebooks'
-alias smh='sshfs lohfu@loadmaster:/mnt/storage/lohfu /mnt/home'
-alias smm-putte='sshfs lohfu@192.168.1.11:/mnt/storage/music /mnt/music'
-alias smm='sshfs lohfu@loadmaster:/mnt/ext02/music /mnt/music'
-alias smn='sshfs lohfu@loadmaster:/mnt/ext01/new /mnt/new'
-alias smt='sshfs master@loadmaster:/mnt/torrents /mnt/torrents'
-alias smtl='sshfs master@192.168.1.60:/mnt/torrents /mnt/torrents'
+alias sme='sshfs lohfu@loader:/mnt/storage/ebooks /mnt/ebooks'
+alias smh='sshfs lohfu@loader:/mnt/storage/lohfu /mnt/home'
+alias smm-putte='sshfs lohfu@putte:/mnt/storage/music /mnt/music'
+alias smm='sshfs lohfu@loader:/mnt/storage/music /mnt/music'
+alias smn='sshfs lohfu@loader:/mnt/storage/new /mnt/new'
+alias smt='sshfs lohfu@loader:/mnt/torrents /mnt/torrents'
 
 # Alias > Mining
 
