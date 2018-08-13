@@ -14,6 +14,7 @@ FILES_LIST=(
   bin/
   bm/
   dev/
+  doc/
   img/
   jot/
   lib/
@@ -24,13 +25,6 @@ FILES_LIST=(
 )
 
 CONFIG_LIST=(
-  .config/MusicBrainz/
-  .config/Thunar/
-  .config/filezilla/
-  .config/gtk-2.0/
-  .config/gtk-3.0/
-  .config/inkscape/
-  .config/mpd/
   .domainrrc
   .gimp-2.8/
   .gtk-bookmarks
@@ -46,7 +40,7 @@ CONFIG_LIST=(
 
 LOG_FILE="$HOME/.log/sync.log"
 
-SERVER_ADDRESS='lohfu@loadmaster'
+SERVER_ADDRESS='lohfu@putte-i'
 LOCAL_ROOT=$HOME
 SERVER_ROOT="~/home"
 DRIVE_ROOT="/mnt/backup/home"

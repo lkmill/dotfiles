@@ -118,11 +118,6 @@ alias mine-cpu-cryptonight="cpuminer -a cryptonight -o stratum+tcp://cryptonight
 alias mine-cpu-lyra2re="cpuminer -a lyra2re -o stratum+tcp://lyra2re.eu.nicehash.com:3342 -u 1ARxGXvJwHYUVqmTNPAHUjHFNbERf8Dzi.bror"
 alias mine-cpu-nist5="cpuminer -a nist5 -o stratum+tcp://nist5.eu.nicehash.com:3340 -u 1ARxGXvJwHYUVqmTNPAHUjHFNbERf8Dzi.boris"
 
-# Alias > _sync
-
-alias backup='$HOME/bin/sync -cfB'
-alias restore='$HOME/bin/sync -cfR'
-
 # Alias > NPM
 
 alias ni='npm install'
@@ -170,6 +165,18 @@ alias msa='mongo mongo.bitmill.co/ams -u ams-supreme -p'
 alias msn='mongo mongo.newseri.com/newseri -u newseri-supreme -p'
 alias msp='mongo mongo.mypaper.io/mypaper-dev -u mypaper-supreme -p'
 alias mspw='mongo mongo.mypaper.io/mypaper-website-dev -u mypaper-supreme -p'
+
+# functions > sync
+
+backup() {
+  sync.py -B "$@"
+}
+
+restore() {
+  sync.py -R "$@"
+}
+
+# functions > misc
 
 pacman() { command pacman "$@" ; rehash ; }
 
