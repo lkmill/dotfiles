@@ -169,6 +169,16 @@ alias mspw='mongo mongo.mypaper.io/mypaper-website-dev -u mypaper-supreme -p'
 
 # functions > sync
 
+genpasswd() {
+  if [ "$1" != "" ]; then
+    length=$1
+  else
+    length=32
+  fi
+
+  cat /dev/urandom | tr -dc A-Za-z0-9 | head -c $length
+}
+
 backup() {
   sync.py -B "$@"
 }
