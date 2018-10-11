@@ -8,6 +8,7 @@ default_dirs = [
   '.config',
   '.local',
   '.vault',
+  '.ssh',
   'bin',
   'biz',
   'dev',
