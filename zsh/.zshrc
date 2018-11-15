@@ -105,6 +105,7 @@ alias sme='sshfs lohfu@loader:/mnt/storage/ebooks /mnt/ebooks'
 alias smh='sshfs lohfu@loader:/mnt/storage/lohfu /mnt/home'
 alias smm-putte='sshfs lohfu@putte:/mnt/storage/music /mnt/music'
 alias smm='sshfs lohfu@loader:/mnt/storage/music /mnt/music'
+alias smm-i='sshfs lohfu@192.168.1.50:/mnt/storage/music /mnt/music'
 alias smn='sshfs lohfu@loader:/mnt/storage/new /mnt/new'
 alias smt='sshfs lohfu@loader:/mnt/torrents /mnt/torrents'
 
@@ -201,6 +202,7 @@ function precmd() {
    echo -en "\e]0;urxvt\a"
 }
 
+export PASSWORD_STORE_X_SELECTION=primary
 
 # see https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
 # other, not as simple solutions more in depth explanation at https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
