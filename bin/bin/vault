@@ -14,7 +14,7 @@ path=
 while getopts ":Dalr" opt; do
 	case $opt in
 		"D")
-			truecrypt -d;
+			veracrypt -d;
 			rm -r $PASSWD_PATH 2> /dev/null
 			rm -r $PLANS_PATH 2> /dev/null
 			rm -r $PRIVATE_PATH 2> /dev/null
@@ -46,6 +46,6 @@ if [[ ! -e $path ]]; then
 	mkdir -p $path
 fi
 
-truecrypt $file $path
+veracrypt $file $path
 
 echo -e "\e[36m${file}\e[0m mounted at \e[36m$path\e[0m"
