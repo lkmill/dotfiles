@@ -43,6 +43,9 @@ else:
     dest = args.local
 
 def sync(params, dirs):
+    if (args.dry_run):
+        params += 'n'
+
     dirs = map(lambda x: os.path.join(src, x), dirs)
 
     command = ['rsync', params, '--delete', '--filter=: .rsync']
