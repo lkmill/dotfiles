@@ -7,8 +7,9 @@ from subprocess import run
 default_dirs = [
   '.config',
   '.local',
-  '.vault',
+  '.password-store',
   '.ssh',
+  '.vault',
   'bin',
   'biz',
   'dev',
