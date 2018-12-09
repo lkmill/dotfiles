@@ -13,6 +13,7 @@ stow neovim -t ~
 stow npm -t ~
 stow ranger -t ~
 stow task -t ~
+stow termite -t ~
 stow tmux -t ~
 stow urxvt -t ~
 stow user-dirs -t ~
