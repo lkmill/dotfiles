@@ -11,6 +11,7 @@ stow mutt -t ~
 stow ncmpcpp -t ~
 stow neovim -t ~
 stow npm -t ~
+stow qutebrowser -t ~
 stow ranger -t ~
 stow sway -t ~
 stow task -t ~
