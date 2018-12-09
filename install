@@ -12,6 +12,7 @@ stow ncmpcpp -t ~
 stow neovim -t ~
 stow npm -t ~
 stow ranger -t ~
+stow sway -t ~
 stow task -t ~
 stow termite -t ~
 stow tmux -t ~
