@@ -102,6 +102,7 @@ alias set-screens-lysvik='xrandr --output eDP1 --off --output HDMI1 --primary --
 # Alias > SSH Mounting
 
 alias sme='sshfs lohfu@loader:/mnt/storage/ebooks /mnt/ebooks'
+alias smen='sshfs lohfu@loader:/mnt/storage/ebooks-new /mnt/ebooks-new'
 alias smh='sshfs lohfu@loader:/mnt/storage/lohfu /mnt/home'
 alias smm-putte='sshfs lohfu@putte:/mnt/storage/music /mnt/music'
 alias smm='sshfs lohfu@loader:/mnt/storage/music /mnt/music'
