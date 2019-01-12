@@ -22,6 +22,9 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim'
 Plug 'Valloric/MatchTagAlways' "highlights nearest enclosing tags
+Plug 'prettier/vim-prettier', {
+   \ 'do': 'npm install',
+   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 " APPEARANCE
 Plug 'vim-airline/vim-airline'
@@ -35,6 +38,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'rbgrouleff/bclose.vim' "required for ranger in vim
+Plug 'wavded/vim-stylus'
+
 " Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -99,6 +104,10 @@ set completeopt-=preview
 
 ":: PLUGINS
 
+"plugins > bclose
+
+let g:no_plugin_maps = 1
+
 " plugins > DEOPLETE
 
 let g:deoplete#enable_at_startup = 1
@@ -133,6 +142,8 @@ nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
 " == ale ==
 let g:ale_linters = { 'javascript': ['eslint'] }
+let g:ale_fixers = {'javascript': ['prettier']}
+" let g:ale_fix_on_save = 1
 
 " == neomake/neomake ==
 "let g:neomake_warning_sign = {
@@ -182,9 +193,12 @@ nnoremap qA :bufdo bd!<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>W :wa<CR>
 
+nnoremap <leader>n :setlocal relativenumber!<CR>
+
 " FZF fuzzy finding
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>B :Buffers<CR>
 nnoremap <leader><Space> :b#<CR>
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -242,6 +256,7 @@ au BufRead,BufNewFile .vimperatorrc setl filetype=vim
 au BufRead,BufNewFile .eslintrc setl filetype=json
 au BufRead,BufNewFile .babelrc setl filetype=json
 au BufRead,BufNewFile *.md setl filetype=markdown
+au BufRead,BufNewFile *.css setl filetype=scss
 au BufRead,BufNewFile *.dust setl filetype=dustjs
 au BufRead,BufNewFile *.ejs setl filetype=html
 au BufRead,BufNewFile *.marko setl filetype=html
