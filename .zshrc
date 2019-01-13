@@ -63,7 +63,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 
 autoload -U colors && colors
 
-PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg[green]%}%m%{$reset_color%} %{$fg[white]%}%~% %b $(git_super_status)
+PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg_bold[green]%}%m%{$reset_color%} %{$fg[white]%}%~% %b $(git_super_status)
 %{$fg[blue]%}└─ %{$reset_color%}'
 
 # Alias > Misc
@@ -208,19 +208,3 @@ export PASSWORD_STORE_X_SELECTION=primary
 # see https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
 # other, not as simple solutions more in depth explanation at https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
 export WORDCHARS=''
-
-# from grml
-# support colors in less
-export LESS_TERMCAP_mb=$'\E[01;31m'
-#export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;34m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-#export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_so=$'\E[01;35m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
-# https://wiki.archlinux.org/index.php/Zsh#Configuring_.24PATH
-export PATH="$HOME/bin:/$HOME/node_modules/.bin:$PATH"
-
