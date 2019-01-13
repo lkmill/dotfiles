@@ -17,7 +17,6 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-
 # mod keys
 set $mod Mod4
 set $hyper Mod3
@@ -32,70 +31,76 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# application bindings
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
-# kill focused window
-bindsym $mod+Shift+q kill
-bindsym $mod+BackSpace kill
-
+# rofi
 bindsym $mod+d exec --no-startup-id rofi -show run -hlfg "#ffb964" -o 85
 bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+grave exec --no-startup-id rofi -show window
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
+# window bindings
+
+## kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+BackSpace kill
+
+## change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+## move focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+## split in horizontal orientation
 bindsym $mod+c split h
 
-# split in vertical orientation
+## split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+## enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+## change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+## toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+## focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+## focus the child container
+bindsym $mod+c focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -104,11 +109,7 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-#rename workspace 3 to "3: www"
-
-# switch to workspace
-bindsym $mod+Tab workspace back_and_forth
-
+# workspaces
 set $ws1 1:www
 set $ws2 2:chat
 set $ws3 3:editor
@@ -139,6 +140,12 @@ workspace $ws-music output primary
 workspace $ws-xtra output primary
 workspace $ws-vm output primary
 
+# workspace bindings
+
+## toggle focus
+bindsym $mod+Tab workspace back_and_forth
+
+## focus
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -180,7 +187,7 @@ bindsym $mod+$alt+m workspace $ws-music
 bindsym $mod+$alt+x workspace $ws-xtra
 bindsym $mod+$alt+v workspace $ws-vm
 
-# move focused container to workspace
+## move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -207,9 +214,7 @@ bindsym $hyper+Shift+m move container to workspace $ws-music
 bindsym $hyper+Shift+x move container to workspace $ws-xtra
 bindsym $hyper+Shift+v move container to workspace $ws-vm
 
-## 
-#
-bindsym $mod+$al+Shift+w move container to workspace $ws1
+bindsym $mod+$alt+Shift+w move container to workspace $ws1
 bindsym $mod+$alt+Shift+c move container to workspace $ws2
 bindsym $mod+$alt+Shift+e move container to workspace $ws3
 bindsym $mod+$alt+Shift+t move container to workspace $ws4
@@ -224,18 +229,13 @@ bindsym $mod+$alt+Shift+m move container to workspace $ws-music
 bindsym $mod+$alt+Shift+x move container to workspace $ws-xtra
 bindsym $mod+$alt+Shift+v move container to workspace $ws-vm
 
+## focus on left/right output
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$right focus output right
 
+## move workspace to left/right output
 bindsym $mod+Shift+Ctrl+$left move workspace to output left
 bindsym $mod+Shift+Ctrl+$right move workspace to output right
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
