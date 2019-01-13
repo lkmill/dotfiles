@@ -36,7 +36,5 @@ echo ".xinitrc" >> ~/.log/xinitrc.log
 if [ $WM = "awesome" ]; then #  # -V: verbose
   exec awesome 2> ~/.log/awesome.log
 else
-  ~/.config/i3/build-config
-
   exec i3 -V -c $HOME/.config/i3/config 2> ~/.log/i3.log
 fi

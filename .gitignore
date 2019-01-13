@@ -1,5 +1,4 @@
 .config/qutebrowser/autoconfig.yml
-.config/i3/config
 .config/ranger/bookmarks
 .config/ranger/history
 .config/ranger/plugins/__pycache__

@@ -1,14 +1,3 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
-
 gaps inner 6
 #gaps outer 15
 
@@ -28,12 +17,13 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+
+# mod keys
 set $mod Mod4
 set $hyper Mod3
 set $alt Mod1
 
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
+# direction keys
 set $up k
 set $down j
 set $left h
@@ -43,7 +33,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -134,20 +124,20 @@ set $ws-music music
 set $ws-xtra xtra
 set $ws-vm vm
 
-workspace $ws1 output $main-display
-workspace $ws2 output $main-display
-workspace $ws3 output $main-display
-workspace $ws4 output $main-display
-workspace $ws5 output $main-display
-workspace $ws6 output $main-display
-workspace $ws7 output $main-display
-workspace $ws8 output $main-display
-workspace $ws9 output $main-display
-workspace $ws10 output $main-display
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws10 output primary
 
-workspace $ws-music output $right-display
-workspace $ws-xtra output $right-display
-workspace $ws-vm output $right-display
+workspace $ws-music output primary
+workspace $ws-xtra output primary
+workspace $ws-vm output primary
 
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -241,9 +231,9 @@ bindsym $mod+Shift+Ctrl+$left move workspace to output left
 bindsym $mod+Shift+Ctrl+$right move workspace to output right
 
 # reload the configuration file
-bindsym $mod+Shift+c exec ~/.config/i3/build-config; reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec ~/.config/i3/build-config; restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 

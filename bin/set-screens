@@ -3,31 +3,17 @@
 case "$(hostname)" in
   "bengt")
     xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
-    export x_display_left="DP-0"
-    export x_display_main="DVI-I-1"
-    export x_display_right="HDMI-0"
     ;;
   "bosse")
     xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output DVI-D-0 --right-of DVI-I-1 --auto
-    export x_display_left="DP-0"
-    export x_display_main="DVI-I-1"
-    export x_display_right="DVI-D-0"
     ;;
   "connor")
-    # xrandr --output DVI-D-0 --primary --auto --output HDMI-0 --auto --right-of DVI-D-0 --output DP-1 --auto --left-of DVI-D-0
     xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --left-of HDMI-0
-    export x_display_left="DVI-D-0"
-    export x_display_main="HDMI-0"
     ;;
   "hans")
     xrandr --output DVI-I-1 --primary --auto --output DVI-D-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
-    export x_display_left="DVI-D-0"
-    export x_display_main="DVI-I-1"
-    export x_display_right="HDMI-0"
     ;;
   "lou")
     xrandr --output DP1 --primary --auto --output eDP1 --right-of DP1 --auto
-    export x_display_main="DP1"
-    export x_display_right="eDP1"
     ;;
 esac
