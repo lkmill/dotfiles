@@ -41,7 +41,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # application bindings
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+t exec --no-startup-id $TERMINAL
+bindsym $mod+r exec --no-startup-id $TERMINAL -e $FILE
 
 # rofi
 bindsym $mod+d exec --no-startup-id rofi -show run -hlfg "#ffb964" -o 85
@@ -100,7 +102,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 ## focus the child container
-bindsym $mod+c focus child
+#bindsym $mod+c focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
