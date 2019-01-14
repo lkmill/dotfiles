@@ -8,9 +8,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Colors
 Plug 'morhetz/gruvbox'
-" Add or remove your plugins here:
+
+" autocomplete
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'sudo npm install -g tern', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 
 " SYNTAX
 " Plug 'neomake/neomake'
@@ -110,17 +112,9 @@ let g:no_plugin_maps = 1
 
 " plugins > DEOPLETE
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay = 0
-
-":: plugins > deoplete > TERN
-
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = 0
+call deoplete#enable()
 
 let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs"
-
 
 ":: plugin > MatchTagAlways
 
