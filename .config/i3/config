@@ -1,10 +1,59 @@
-gaps inner 6
-#gaps outer 15
+# set colours from Xresources
+set_from_resource $black          color0  #000000
+set_from_resource $grey           color8  #000000
+set_from_resource $red            color1  #000000
+set_from_resource $lightred       color9  #000000
+set_from_resource $green          color2  #000000
+set_from_resource $lightgreen     color10 #000000
+set_from_resource $yellow         color3  #000000
+set_from_resource $lightyellow    color11 #000000
+set_from_resource $blue           color4  #000000
+set_from_resource $lightblue      color12 #000000
+set_from_resource $magenta        color5  #000000
+set_from_resource $lightmagenta   color13 #000000
+set_from_resource $cyan           color6  #000000
+set_from_resource $lightcyan      color14 #000000
+set_from_resource $white          color7  #000000
+set_from_resource $lightwhite     color15 #000000
 
-for_window [class="^.*"] border pixel 0
+set $darkblack #000000
+set $lightblack #383838
+
+gaps inner 6
+gaps outer 0
+
+for_window [class="^.*"] border pixel 2
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $blue       $blue       $darkblack  $blue        $blue
+client.unfocused        $black      $black      $lightwhite $red        $black
+client.focused_inactive $lightblack $lightblack $lightwhite  $black      $black
+client.urgent           $red        $red        $black      $red        $red
+client.background       $black
+
+bar {
+  position top
+  status_command i3status
+  font pango:mono 10
+  mode dock
+  modifier None
+  tray_output primary
+
+  colors {
+    background $darkblack
+    statusline $darkwhite
+    separator $cyan
+    focused_workspace  $lightblue $blue $black
+    active_workspace   $lightblue $lightblue $white
+    inactive_workspace $black $black $lightwhite
+    urgent_workspace   $black $black $lightwhite
+  }
+
+}
+
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -245,7 +294,6 @@ bindsym $mod+Shift+u       resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+i       resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+o       resize grow width 5 px or 5 ppt
 
-
 # volume bindings
 bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
@@ -284,11 +332,3 @@ bindsym Control+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots/ 2>/de
 bindsym Shift+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
 bindsym Shift+Control+Print exec "scrot -e 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
 bindsym $mod+Shift+Print exec "scrot -ue 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        position top
-        status_command i3status
-}
