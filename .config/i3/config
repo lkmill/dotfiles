@@ -245,12 +245,15 @@ bindsym $mod+Shift+u       resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+i       resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+o       resize grow width 5 px or 5 ppt
 
+
+# volume bindings
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym $mod+Next exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym $mod+Prior exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+
 ## mpd
-
-bindsym XF86AudioLowerVolume exec "amixer set Master 4%-"
-bindsym XF86AudioRaiseVolume exec "amixer set Master 4%+"
-bindsym XF86AudioMute exec "amixer set Master toggle"
-
 bindsym XF86AudioPrev exec "mpc prev"
 bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPlay exec "mpc toggle"
@@ -267,8 +270,6 @@ bindsym $mod+Shift+F6 exec "~/bin/rate 0"
 bindsym $mod+Shift+F7 exec "~/bin/rate 7"
 bindsym $mod+Shift+F8 exec "~/bin/rate 8"
 
-bindsym $mod+Next exec "amixer set Master 4%-"
-bindsym $mod+Prior exec "amixer set Master 4%+"
 bindsym $mod+Shift+Next exec "mpc next"
 bindsym $mod+Shift+Prior exec "mpc prev"
 bindsym Pause exec "mpc toggle"
