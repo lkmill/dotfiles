@@ -258,8 +258,6 @@ au BufRead,BufNewFile *.dust.html setl filetype=dustjs
 au BufNewFile,BufRead *.tag setlocal ft=javascript
 
 ":: FILE TYPES
-
-autocmd FileType help wincmd L
 autocmd FileType less,scss,css setl synmaxcol=120 omnifunc=csscomplete#CompleteCSS foldmethod=marker foldmarker={,}
 autocmd FileType php setl omnifunc=phpcomplete#CompletePHP foldmethod=indent
 autocmd FileType marko,dustjs,html setl omnifunc=htmlcomplete#CompleteTags foldmethod=indent
