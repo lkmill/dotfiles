@@ -28,6 +28,11 @@ Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
+" ctags
+Plug 'sergioramos/jsctags'
+Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
+
 " APPEARANCE
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -203,6 +208,9 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gB :Gblame w<CR>
+
+" mappings > tagbar
+nnoremap <leader>t :TagbarToggle<CR>
 
 " mappings > editing and sourcing vim configs
 nnoremap <leader>vr :e ~/.config/nvim/init.vim<CR>
