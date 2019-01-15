@@ -11,6 +11,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+if [ -s ~/.xprofile ]; then
+	source ~/.xprofile
+fi
+
 # load all settings in .Xresource file (mainly for urxvt terminal)
 if [ -s ~/.Xresources ]; then
 	xrdb ~/.Xresources
