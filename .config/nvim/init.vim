@@ -10,9 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 " autocomplete
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " SYNTAX
 " Plug 'neomake/neomake'
@@ -27,11 +25,6 @@ Plug 'Valloric/MatchTagAlways' "highlights nearest enclosing tags
 Plug 'prettier/vim-prettier', {
    \ 'do': 'npm install',
    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-
-" ctags
-Plug 'sergioramos/jsctags'
-Plug 'majutsushi/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
 
 " APPEARANCE
 Plug 'vim-airline/vim-airline'
@@ -114,10 +107,6 @@ set completeopt-=preview
 "plugins > bclose
 
 let g:no_plugin_maps = 1
-
-" plugins > DEOPLETE
-
-call deoplete#enable()
 
 let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs"
 
