@@ -1,10 +1,8 @@
-"dein Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible " be vimproved
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-" required
 
 " Colors
 Plug 'morhetz/gruvbox'
@@ -13,7 +11,6 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " SYNTAX
-" Plug 'neomake/neomake'
 Plug 'w0rp/ale'
 
 " syntax > JS
@@ -50,17 +47,12 @@ Plug 'Valloric/ListToggle'
 
 call plug#end()
 
-" required
 filetype plugin indent on
 
 syntax on
 
 set bg=dark
 colorscheme gruvbox
-
-" no scheme is not the same as not the same as default
-"colorscheme sup3rman
-"colorscheme default
 
 highlight MatchTag ctermfg=green ctermbg=black cterm=bold guifg=green guibg=black
 
@@ -105,19 +97,18 @@ set completeopt-=preview
 ":: PLUGINS
 
 "plugins > bclose
-
 let g:no_plugin_maps = 1
 
+" plugins > closetag
 let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs"
 
-":: plugin > MatchTagAlways
-
+" plugins > MatchTagAlways
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 let g:mta_filetypes = { 'javascript.jsx': 1, 'html' : 1, 'marko' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1, }
-
 nnoremap <leader>5 :MtaJumpToOtherTag<cr>
 
+" plugins > tmux navigator
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
@@ -125,35 +116,16 @@ nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
-" let g:airline_left_sep=''
-" let g:airline_right_sep=''
-
 " == ale ==
 let g:ale_linters = { 'javascript': ['eslint'] }
 let g:ale_fixers = {'javascript': ['prettier']}
 " let g:ale_fix_on_save = 1
 
-" == neomake/neomake ==
-"let g:neomake_warning_sign = {
-"\ 'text': 'W',
-"\ 'texthl': 'WarningMsg',
-"\ }
-"let g:neomake_error_sign = {
-"\ 'text': 'E',
-"\ 'texthl': 'ErrorMsg',
-"\ }
-"let g:neomake_javascript_enabled_makers = ['eslint']
-"let g:neomake_jsx_enabled_makers = ['eslint']
-
-
-" autocmd! BufWritePost * Neomake
-
 ":: MAPPINGS 
 
 let mapleader = "\<Space>"
 
-":: readline mappings in insert mode
-
+" readline mappings in insert mode
 imap <C-b> <left>
 imap <C-f> <right>
 imap <C-d> <del>
@@ -295,32 +267,6 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git/*' --glob '!*.png' --glob '!*.jpg'"
 
 ":: Ranger
-
-" from http://ornicar.github.io/2011/02/12/ranger-as-vim-file-manager.html
-
-" function! Ranger(cwd)
-" 	let currentFile = expand("%:p")
-" 	let rangerCallback = { 'name': 'ranger' }
-" 	function! rangerCallback.on_exit(id, code)
-" 		Bclose!
-" 		try
-" 			if filereadable('/tmp/chosenfile')
-" 				exec system('sed -ie "s/ /\\\ /g" /tmp/chosenfile')
-" 				exec 'argadd ' . system('cat /tmp/chosenfile | tr "\\n" " "')
-" 				exec 'edit ' . system('head -n1 /tmp/chosenfile')
-" 				call system('rm /tmp/chosenfile')
-" 			endif
-" 		endtry
-" 	endfunction
-" 	enew
-" 	if a:cwd
-" 		call termopen('ranger --choosefiles=/tmp/chosenfile', rangerCallback)
-" 	else
-" 		call termopen('ranger --choosefiles=/tmp/chosenfile --selectfile=' . currentFile, rangerCallback)
-" 	endif
-" 	startinsert
-" endfunction
-
 function! OpenRangerIn(path, edit_cmd)
   let currentPath = expand(a:path)
   let rangerCallback = { 'name': 'ranger', 'edit_cmd': a:edit_cmd }
