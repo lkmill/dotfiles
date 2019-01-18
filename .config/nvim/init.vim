@@ -198,6 +198,7 @@ vnoremap <C-j> :<C-u>exe "'<,'>move '>+" . v:count1<CR>gv
 vnoremap <C-k> :<C-u>exe "'<,'>move '<-" . (v:count1 + 1)<CR>gv
 
 " mappings > folds
+nnoremap zV zMzv
 nnoremap <C-h> zc
 nnoremap <M-C-h> zC
 nnoremap <C-l> zo
