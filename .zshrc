@@ -153,6 +153,10 @@ alias gp='git push'
 alias gR='git rebase'
 alias gr='git reset'
 alias gs='git status'
+alias gsa='git stash apply'
+alias gsl='git stash list'
+alias gsp='git stash push'
+alias gss='git stash show'
 
 # Alias > shotwell
 
