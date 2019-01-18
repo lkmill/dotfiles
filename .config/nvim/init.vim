@@ -191,6 +191,12 @@ nmap <leader>R :Ranger<CR>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 
+" mappings > move lines
+nnoremap <C-j> :<C-u>exe "move +" . v:count1<CR>
+nnoremap <C-k> :<C-u>exe "move -" . (v:count1 + 1)<CR>
+vnoremap <C-j> :<C-u>exe "'<,'>move '>+" . v:count1<CR>gv
+vnoremap <C-k> :<C-u>exe "'<,'>move '<-" . (v:count1 + 1)<CR>gv
+
 " mappings > folds
 nnoremap <C-h> zc
 nnoremap <M-C-h> zC
