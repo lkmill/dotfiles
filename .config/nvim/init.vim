@@ -59,6 +59,7 @@ highlight MatchTag ctermfg=green ctermbg=black cterm=bold guifg=green guibg=blac
 set exrc
 
 set number
+set relativenumber
 set ruler
 set nowrap
 
