@@ -175,10 +175,11 @@ nnoremap <leader>gB :Gblame w<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 
 " mappings > editing and sourcing vim configs
-nnoremap <leader>vr :e ~/.config/nvim/init.vim<CR>
-nnoremap <leader>vc :e ~/.vim/colors/sup3rman.vim<CR>
-nnoremap <leader>vsr :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>vsc :source ~/.vim/colors/sup3rman.vim<CR>
+nnoremap <leader>ci :e ~/.config/i3/config<CR>
+nnoremap <leader>cr :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader>cc :e ~/.vim/colors/sup3rman.vim<CR>
+nnoremap <leader>csr :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>csc :source ~/.vim/colors/sup3rman.vim<CR>
 
 " mappings > ranger
 let g:ranger_map_keys = 0
