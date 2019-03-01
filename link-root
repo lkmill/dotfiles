@@ -1,0 +1,5 @@
+#!/bin/bash
+
+script_dir=$(dirname $(readlink -f "$0"))
+
+stow -t / -d $script_dir root
