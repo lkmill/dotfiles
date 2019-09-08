@@ -11,7 +11,7 @@ case "$(hostname)" in
     xrandr --output DP-0 --primary --auto --output HDMI-0 --right-of DP-0 --auto
     ;;
   "connor")
-    xrandr --output HDMI-0 --primary --auto --output DVI-D-0 --auto --left-of HDMI-0
+    xrandr --output HDMI-0 --primary --auto --output DP-1 --auto --left-of HDMI-0 --output DVI-D-0 --auto --right-of HDMI-0
     ;;
   "hans")
     xrandr --output DVI-I-1 --primary --auto --output DVI-D-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
