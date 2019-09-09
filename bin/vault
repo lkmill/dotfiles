@@ -15,11 +15,17 @@ while getopts ":Dalr" opt; do
 	case $opt in
 		"D")
 			veracrypt -d;
-			rm -r $PASSWD_PATH 2> /dev/null
-			rm -r $PLANS_PATH 2> /dev/null
-			rm -r $PRIVATE_PATH 2> /dev/null
-			echo all volumes dismounted.
-			exit;
+
+      if [ $? -eq 0 ]; then
+        rm -r $PASSWD_PATH 2> /dev/null
+        rm -r $PLANS_PATH 2> /dev/null
+        rm -r $PRIVATE_PATH 2> /dev/null
+        echo all volumes dismounted.
+      else
+        echo unmount failed
+      fi
+
+			exit
 			;;
 		"a")
 			file=$PASSWD_FILE
