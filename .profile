@@ -3,7 +3,7 @@
 export PATH="$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/bin:/$HOME/node_modules/.bin:$PATH"
 export EDITOR="nvim"
 export TERMINAL="urxvt"
-export BROWSER="chromium"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="ranger"
 
