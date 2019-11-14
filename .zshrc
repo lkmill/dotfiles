@@ -121,7 +121,7 @@ alias mine-cpu-cryptonight="cpuminer -a cryptonight -o stratum+tcp://cryptonight
 alias mine-cpu-lyra2re="cpuminer -a lyra2re -o stratum+tcp://lyra2re.eu.nicehash.com:3342 -u 1ARxGXvJwHYUVqmTNPAHUjHFNbERf8Dzi.bror"
 alias mine-cpu-nist5="cpuminer -a nist5 -o stratum+tcp://nist5.eu.nicehash.com:3340 -u 1ARxGXvJwHYUVqmTNPAHUjHFNbERf8Dzi.boris"
 
-# Alias > NPM
+# Alias > NPM, yarn
 
 alias ni='npm install'
 alias nid='npm install --save-dev'
@@ -132,6 +132,9 @@ alias nud='npm uninstall --save-dev'
 alias nus='npm uninstall --save'
 alias nU='npm update'
 
+alias yr='yarn run'
+alias yi='yarn add'
+
 # Alias > Task
 
 alias ta='task add'
@@ -139,6 +142,7 @@ alias tm='task modify'
 
 # Alias > Git
 
+alias g='git'
 alias gA='git add $_'
 alias ga='git add'
 alias gb='git branch'
@@ -161,6 +165,7 @@ alias gs='git status'
 alias gsa='git stash apply'
 alias gsl='git stash list'
 alias gsp='git stash push'
+alias gsP='git stash pop'
 alias gss='git stash show'
 
 # Alias > shotwell
