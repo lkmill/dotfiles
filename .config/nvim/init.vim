@@ -8,12 +8,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 " autocomplete
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " SYNTAX
 Plug 'w0rp/ale'
 
 " syntax > JS
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 Plug 'mxw/vim-jsx'
 Plug 'othree/es.next.syntax.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -101,7 +103,7 @@ set completeopt-=preview
 let g:no_plugin_maps = 1
 
 " plugins > closetag
-let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs"
+let g:closetag_filenames = "*.html,*.marko,*.dust,*.jsx,*.ejs,*.tsx"
 
 " plugins > MatchTagAlways
 let g:mta_use_matchparen_group = 0
@@ -119,8 +121,8 @@ nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
 " == ale ==
 let g:ale_linters = { 'javascript': ['eslint'] }
-let g:ale_fixers = {'javascript': ['prettier']}
-" let g:ale_fix_on_save = 1
+let g:ale_fixers = { 'javascript': ['prettier'], 'typescript': ['prettier'], 'scss': ['prettier'], 'css': ['prettier'] }
+let g:ale_fix_on_save = 1
 
 ":: MAPPINGS 
 
@@ -145,6 +147,7 @@ nnoremap <leader>d :read !date<CR>A
 nnoremap <leader>D :read !date<CR>A: 
 
 
+nmap gQ gq%
 nnoremap qw :bp<bar>sp<bar>bn<bar>bw<CR>
 nnoremap qW :bp<bar>sp<bar>bn<bar>bw!<CR>
 nnoremap qd :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -224,6 +227,8 @@ command! Css set filetype=css
 command! Markdown set filetype=markdown
 
 au BufRead,BufNewFile *.mjs setl filetype=javascript
+au BufRead,BufNewFile *.ts setl filetype=typescript
+au BufRead,BufNewFile *.tsx setl filetype=typescript.tsx
 au BufRead,BufNewFile .vimperatorrc setl filetype=vim
 au BufRead,BufNewFile .eslintrc setl filetype=json
 au BufRead,BufNewFile .babelrc setl filetype=json
