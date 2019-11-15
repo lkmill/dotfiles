@@ -1,0 +1,20 @@
+#!/bin/sh
+
+GENERATED_LENGTH="${PASSWORD_STORE_GENERATED_LENGTH:-25}"
+CHARACTER_SET="${PASSWORD_STORE_CHARACTER_SET:-[:punct:][:alnum:]}"
+CHARACTER_SET_NO_SYMBOLS="${PASSWORD_STORE_CHARACTER_SET_NO_SYMBOLS:-[:alnum:]}"
+PROGRAM="${0##*/}"
+
+characters=$CHARACTER_SET
+
+opts="$(getopt -o n -l no-symbols -n "$PROGRAM" -- "$@")"
+eval set -- "$opts"
+
+while true; do case $1 in
+  -n|--no-symbols) characters="$CHARACTER_SET_NO_SYMBOLS"; shift ;;
+  --) shift; break ;;
+esac done
+
+length="${1:-$GENERATED_LENGTH}"
+
+cat /dev/urandom | tr -dc "$characters" | head -c $length
