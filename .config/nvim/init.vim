@@ -124,6 +124,8 @@ let g:ale_linters = { 'javascript': ['eslint'] }
 let g:ale_fixers = { 'javascript': ['prettier'], 'typescript': ['prettier'], 'scss': ['prettier'], 'css': ['prettier'] }
 let g:ale_fix_on_save = 1
 
+command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
+
 ":: MAPPINGS 
 
 let mapleader = "\<Space>"
@@ -175,7 +177,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gB :Gblame w<CR>
 
 " mappings > tagbar
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>t :ALEToggleFixer<CR>
 
 " mappings > editing and sourcing vim configs
 nnoremap <leader>ci :e ~/.config/i3/config<CR>
