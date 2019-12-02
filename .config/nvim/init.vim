@@ -280,7 +280,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git/*' --glob '!*.png' --glob '!*.jpg'"
+let $FZF_DEFAULT_COMMAND="rg --files --ignore-file .rgignore --hidden --follow --glob '!.git/*' --glob '!*.png' --glob '!*.jpg'"
 
 ":: Ranger
 function! OpenRangerIn(path, edit_cmd)
