@@ -3,6 +3,7 @@ urxvt.iso14755 : false
 *.font: -*-tamsyn-medium-*-*-*-12-*-*-*-*-*-*-*
 
 urxvt.scrollBar: false
+urxvt.internalBorder: 10
 
 urxvt.perl-ext-common:    default,url-select,font-size
 urxvt.url-select.launcher:  chromium
