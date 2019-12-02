@@ -170,7 +170,7 @@ set $ws5 5:files
 set $ws6 6:jot
 set $ws7 7:gra
 set $ws8 8:staging
-set $ws9 9
+set $ws9 9:dev
 set $ws10 0
 
 set $ws-music music
@@ -218,6 +218,7 @@ bindsym $hyper+j workspace $ws6
 bindsym $hyper+z workspace $ws6
 bindsym $hyper+g workspace $ws7
 bindsym $hyper+s workspace $ws8
+bindsym $hyper+d workspace $ws9
 
 bindsym $hyper+a workspace $ws-music
 bindsym $hyper+m workspace $ws-music
@@ -233,6 +234,7 @@ bindsym $mod+$alt+j workspace $ws6
 bindsym $mod+$alt+z workspace $ws6
 bindsym $mod+$alt+g workspace $ws7
 bindsym $mod+$alt+s workspace $ws8
+bindsym $mod+$alt+d workspace $ws9
 
 bindsym $mod+$alt+a workspace $ws-music
 bindsym $mod+$alt+m workspace $ws-music
@@ -260,6 +262,7 @@ bindsym $hyper+Shift+j move container to workspace $ws6
 bindsym $hyper+Shift+z move container to workspace $ws6
 bindsym $hyper+Shift+g move container to workspace $ws7
 bindsym $hyper+Shift+s move container to workspace $ws8
+bindsym $hyper+Shift+d move container to workspace $ws9
 
 bindsym $hyper+Shift+a move container to workspace $ws-music
 bindsym $hyper+Shift+m move container to workspace $ws-music
@@ -275,6 +278,7 @@ bindsym $mod+$alt+Shift+j move container to workspace $ws6
 bindsym $mod+$alt+Shift+z move container to workspace $ws6
 bindsym $mod+$alt+Shift+g move container to workspace $ws7
 bindsym $mod+$alt+Shift+s move container to workspace $ws8
+bindsym $mod+$alt+Shift+d move container to workspace $ws9
 
 bindsym $mod+$alt+Shift+a move container to workspace $ws-music
 bindsym $mod+$alt+Shift+m move container to workspace $ws-music
