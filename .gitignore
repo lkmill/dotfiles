@@ -4,5 +4,9 @@
 .config/ranger/plugins/__pycache__
 .config/ranger/plugins/__init__.py
 
+.domainrrc
+
 .tmux/plugins/*
 !.tmux/plugins/tpm
+
+yarn.lock
