@@ -86,7 +86,7 @@ alias zs='source $HOME/.zshrc'
 # Alias > System
 
 alias grep='grep --color=auto'
-alias ls='LC_ALL=C ls --color=auto' #LC_ALL=c sorts hidden files first (and is case insensitive, unfortunately)
+alias ls='LC_ALL=C ls -F --color=auto' #LC_ALL=c sorts hidden files first (and is case insensitive, unfortunately)
 alias vim='nvim'
 alias xsel='xsel --logfile $HOME/.log/xsel.log'
 alias ngrep='grep --exclude-dir=.git/ --exclude-dir node_modules/ -r'
