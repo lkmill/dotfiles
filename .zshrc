@@ -35,9 +35,6 @@ FZF_CTRL_R_OPTS='--reverse'
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source $HOME/.zsh/fzf-git.zsh
-
-
-# Autopairs
 source $HOME/.zsh/autopair.zsh
 source $HOME/.zsh/zsh-git-prompt.zsh
 
