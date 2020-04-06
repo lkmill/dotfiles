@@ -309,7 +309,8 @@ bindsym $mod+Prior exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 ## mpd
 bindsym XF86AudioPrev exec "mpc prev"
 bindsym XF86AudioNext exec "mpc next"
-bindsym XF86AudioPlay exec "mpc toggle"
+#bindsym XF86AudioPlay exec "mpc toggle"
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
 bindsym XF86MonBrightnessUp  exec "xbacklight -inc 10"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
