@@ -171,6 +171,10 @@ alias gsp='git stash push'
 alias gsP='git stash pop'
 alias gss='git stash show'
 
+# Alias > C++
+
+alias gpp='g++ -Wall -Wextra -pedantic-errors -Wold-style-cast -std=c++11'
+
 # Alias > shotwell
 
 alias shotwell-ideas='shotwell -d $HOME/.local/share/shotwell-ideas'
