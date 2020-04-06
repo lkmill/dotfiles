@@ -37,6 +37,7 @@ source /usr/share/fzf/key-bindings.zsh
 source $HOME/.zsh/fzf-git.zsh
 source $HOME/.zsh/autopair.zsh
 source $HOME/.zsh/zsh-git-prompt.zsh
+source $HOME/.zsh/yarn-completion.plugin.zsh
 
 # Settings
 
