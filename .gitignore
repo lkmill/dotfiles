@@ -1,6 +1,7 @@
 .config/qutebrowser/autoconfig.yml
 .config/ranger/bookmarks
 .config/ranger/history
+.config/ranger/tagged
 .config/ranger/plugins/__pycache__
 .config/ranger/plugins/__init__.py
 
