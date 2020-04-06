@@ -12,7 +12,7 @@
 
 [user]
 	name = Linus Miller
-	email = lohfu@lohfu.io
+	email = linus.miller@bitmill.io
 [push]
 	default = simple
 [filter "lfs"]
