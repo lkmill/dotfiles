@@ -133,7 +133,8 @@ alias nus='npm uninstall --save'
 alias nU='npm update'
 
 alias yr='yarn run'
-alias yi='yarn add'
+alias ya='yarn add'
+alias yad='yarn add -D'
 
 # Alias > Task
 
