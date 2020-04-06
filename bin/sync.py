@@ -7,6 +7,7 @@ from subprocess import run
 default_dirs = [
   '.config',
   '.local',
+  '.pgadmin',
   '.password-store',
   '.ssh',
   '.vault',
@@ -17,6 +18,7 @@ default_dirs = [
   'doc',
   'edu',
   'img',
+  'own',
   'jot',
   'lib',
   'usr',
