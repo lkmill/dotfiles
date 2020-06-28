@@ -18,7 +18,7 @@ function zshaddhistory() {
 setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
-setopt appendhistory notify
+setopt INC_APPEND_HISTORY
 unsetopt autocd beep extendedglob nomatch
 
 bindkey -e
@@ -75,6 +75,8 @@ alias mouse-left='xmodmap -e "pointer = 3 2 1"'
 alias mouse-right='xmodmap -e "pointer = 1 2 3"'
 alias fchmod='find . -type f -exec chmod 644 {} \;'
 alias dchmod='find . -type d -exec chmod 755 {} \;'
+# usage: $ xsel | x509
+alias x509="sed 's/\\\\n/\\n/g' | openssl x509 -text -noout"
 
 # Alias > ZSH
 
