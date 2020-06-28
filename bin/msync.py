@@ -51,8 +51,18 @@ def sync(params, dirs, server_dir):
 home_dirs = [ x for x in args.dir if x in home_dirs ]
 storage_dirs = [ x for x in args.dir if x in storage_dirs ]
 
+# rsync -a means:
+#   r: recursive
+#   l: copy symlinks
+#   p: preserve permissions
+#   t: preserve times
+#   g: preserve group
+#   o: preserver owner
+#   D: equal to --devices --specials
+default_params = '-rltDv'
+
 if (len(home_dirs) > 0):
-    sync('-av', home_dirs, home_root)
+    sync(default_params, home_dirs, home_root)
 
 if (len(storage_dirs)):
-    sync('-av', storage_dirs, storage_root)
+    sync(default_params, storage_dirs, storage_root)
