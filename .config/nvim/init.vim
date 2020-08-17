@@ -121,7 +121,7 @@ nnoremap <silent> <M-/> :TmuxNavigatePrevious<cr>
 
 " == ale ==
 let g:ale_linters = { 'javascript': ['eslint'] }
-let g:ale_fixers = { 'javascript': ['prettier'], 'typescript': ['prettier'], 'scss': ['prettier'], 'css': ['prettier'] }
+let g:ale_fixers = { 'javascript': ['prettier'], 'json': ['prettier'], 'typescript': ['prettier'], 'scss': ['prettier'], 'css': ['prettier'], 'html': ['prettier'] }
 let g:ale_fix_on_save = 1
 
 command! ALEToggleFixer execute "let g:ale_fix_on_save = get(g:, 'ale_fix_on_save', 0) ? 0 : 1"
