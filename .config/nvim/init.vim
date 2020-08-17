@@ -174,7 +174,7 @@ nnoremap <leader>/ :nohl<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gB :Gblame w<CR>
+nnoremap <leader>gB :Gblame -w<CR>
 
 " mappings > tagbar
 nnoremap <leader>t :ALEToggleFixer<CR>
