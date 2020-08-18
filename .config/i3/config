@@ -307,9 +307,19 @@ bindsym $mod+Next exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 bindsym $mod+Prior exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 
 ## mpd
-bindsym XF86AudioPrev exec "mpc prev"
-bindsym XF86AudioNext exec "mpc next"
+# bindsym XF86AudioPrev exec "mpc prev"
+# bindsym $mod+Shift+Prior exec "mpc prev"
+bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym $mod+Shift+Prior exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+# bindsym XF86AudioNext exec "mpc next"
+# bindsym $mod+Shift+Next exec "mpc next"
+bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym $mod+Shift+Next exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
 #bindsym XF86AudioPlay exec "mpc toggle"
+# bindsym Pause exec "mpc toggle"
+bindsym Pause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
 bindsym XF86MonBrightnessUp  exec "xbacklight -inc 10"
@@ -323,10 +333,6 @@ bindsym $mod+Shift+F5 exec "~/bin/rate 5"
 bindsym $mod+Shift+F6 exec "~/bin/rate 0"
 bindsym $mod+Shift+F7 exec "~/bin/rate 7"
 bindsym $mod+Shift+F8 exec "~/bin/rate 8"
-
-bindsym $mod+Shift+Next exec "mpc next"
-bindsym $mod+Shift+Prior exec "mpc prev"
-bindsym Pause exec "mpc toggle"
 
 bindsym $mod+Pause exec "i3lock -c 282828"
 bindsym Shift+$mod+Pause exec "i3lock -c 282828 && systemctl suspend"
