@@ -29,6 +29,7 @@
     fc = "!git branch | fzf +m | xargs git checkout"
     fcr = "!git branch --remote | rg -v HEAD | fzf -m | sed \"s#[^/]*/##\" | git checkout"
     fca = "!git branch --all | rg -v HEAD | fzf -m | sed \"s#remotes/[^/]*/##\" | xargs git checkout"
+    fd = "!git ls-files -m | fzf --print0 -m | xargs -0 -t git diff"
     fbd = "!git branch | fzf +m | xargs git branch -d"
     fbD = "!git branch | fzf +m | xargs git branch -D"
     # reset (checkout) modifed files
