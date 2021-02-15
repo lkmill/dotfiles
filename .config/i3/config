@@ -306,21 +306,15 @@ bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindsym $mod+Next exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
 bindsym $mod+Prior exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 
-## mpd
-# bindsym XF86AudioPrev exec "mpc prev"
-# bindsym $mod+Shift+Prior exec "mpc prev"
-bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-bindsym $mod+Shift+Prior exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+## music
+bindsym Pause exec "i3_music_toggle"
+bindsym XF86AudioPlay exec "i3_music_toggle"
 
-# bindsym XF86AudioNext exec "mpc next"
-# bindsym $mod+Shift+Next exec "mpc next"
-bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-bindsym $mod+Shift+Next exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym XF86AudioPrev exec "i3_music_prev"
+bindsym $mod+Shift+Prior exec "i3_music_prev"
 
-#bindsym XF86AudioPlay exec "mpc toggle"
-# bindsym Pause exec "mpc toggle"
-bindsym Pause exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioNext exec "i3_music_next"
+bindsym $mod+Shift+Next exec "i3_music_next"
 
 bindsym XF86MonBrightnessUp  exec "xbacklight -inc 10"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
@@ -340,7 +334,8 @@ bindsym XF86Sleep exec "i3lock -c 282828 && systemctl suspend"
 
 bindsym Print exec "scrot -e 'mv $f ~/img/screenshots/ 2>/dev/null'"
 bindsym $mod+Print exec "scrot -ue 'mv $f ~/img/screenshots/ 2>/dev/null'"
-bindsym Control+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots/ 2>/dev/null'"
+# bindsym Control+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots/ 2>/dev/null'"
+bindsym Control+Print exec "maim -s ~/img/screenshots/$(date +%F-%H%M%S)_maim.png"
 bindsym Shift+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
 bindsym Shift+Control+Print exec "scrot -e 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
 bindsym $mod+Shift+Print exec "scrot -ue 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"

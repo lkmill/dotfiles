@@ -1,0 +1,14 @@
+#!/bin/sh
+
+source ~/.zshenv
+
+music_player=${I3_MUSIC_PLAYER:-mpd}
+
+case $music_player in
+  'mpd')
+    mpc prev
+    ;;
+  'spotify')
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    ;;
+esac
