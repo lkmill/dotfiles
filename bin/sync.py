@@ -3,6 +3,7 @@
 import os
 import argparse
 from subprocess import run
+from datetime import datetime
 
 default_dirs = [
   '.config',
@@ -67,3 +68,11 @@ if (len(regular_param_dirs)):
 
 if (len(checksum_param_dirs) > 0):
     sync('-acv', checksum_param_dirs)
+
+
+BLUE = '\033[94m'
+GREEN = '\033[92m'
+WHITE = '\033[0m'
+RED = '\033[91m'
+
+print(f'\n{"!DRY! " if args.dry_run else ""}finished {f"{GREEN}backup{WHITE}" if args.backup else f"{RED}restore{WHITE}"} @ {BLUE}{str(datetime.now())}{WHITE}')
