@@ -17,15 +17,15 @@
   },
   "homepage": "https://github.com/lohfu/dotfiles#readme",
   "dependencies": {
-    "@angular/cli": "^10.0.6",
-    "doctoc": "^1.4.0",
+    "doctoc": "^2.0.1",
     "domai.nr": "^0.0.2",
-    "fast-cli": "^2.4.0",
-    "npm-check-updates": "^7.1.1",
+    "npm-check-updates": "^11.8.2",
     "prettier": "^2.0.5",
     "source-map-explorer": "^2.4.2",
-    "svgo": "^1.3.2",
-    "tern": "^0.24.3"
+    "svgo": "^2.3.1",
+    "tern": "^0.24.3",
+    "terser": "^5.7.1",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {}
 }
