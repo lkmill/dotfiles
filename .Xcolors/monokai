@@ -1,0 +1,62 @@
+! copied from monokai.nvim
+
+#define bg #26292C
+#define border #504945
+#define bg_popup #333842
+#define bg_highlight #2E323C
+#define fg #f8f8f0
+#define fg_alt #5B6268
+#define white #f8f8f0
+#define grey #8F908A
+#define darkgrey #64645e
+#define black #000000
+#define pink #f92672
+#define green #a6e22e
+#define aqua #66d9ef
+#define cyan #A1EFE4
+#define yellow #e6db74
+#define orange #fd971f
+#define purple #ae81ff
+#define red #e95678
+#define purered #ff0000
+#define darkred #5f0000
+#define addfg #d7ffaf
+#define addbg #5f875f
+#define delfg #ff8b8b
+#define delbg #f75f5f
+#define changefg #d7d7ff
+#define changebg #5f5f87
+#define alternate_green #9EC400
+#define alternate_yellow #E7C547
+#define alternate_blue #7AA6DA
+#define alternate_purple #B77EE0
+#define alternate_cyan #54CED6
+#define alternate_white #FFFFFF
+#define none NONE
+
+
+*foreground:   white
+#ifdef background_opacity
+*background:   [background_opacity]bg
+#else
+*background:   bg
+#endif
+*cursorColor:  white
+
+*color0:       bg
+*color1:       red
+*color2:       green
+*color3:       yellow
+*color4:       aqua
+*color5:       purple
+*color6:       cyan
+*color7:       white
+
+*color8:       darkgrey
+*color9:       pink
+*color10:      alternate_green
+*color11:      alternate_yellow
+*color12:      alternate_cyan
+*color13:      alternate_purple
+*color14:      alternate_blue
+*color15:      alternate_white

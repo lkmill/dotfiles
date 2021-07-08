@@ -43,4 +43,4 @@ rofi.kb-accept-entry:                Control+m,Return,KP_Enter
 ! "Delete till the end of line" Set from: Default
 rofi.kb-remove-to-eol:               
 
-#include ".Xcolors/gruvbox"
+#include ".Xcolors/monokai"
