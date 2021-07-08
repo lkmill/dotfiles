@@ -1,6 +1,12 @@
 #!/bin/sh
 
-case "$(hostname)" in
+if [ -z "$1" ]; then
+  hostname=$(hostname)
+else
+  hostname=$1
+fi
+
+case $hostname in
   "bengt")
     xrandr --output DVI-I-1 --primary --auto --output DP-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
     ;;
@@ -16,7 +22,13 @@ case "$(hostname)" in
   "hans")
     xrandr --output DVI-I-1 --primary --auto --output DVI-D-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
     ;;
-  "lou")
-    xrandr --output DP1 --primary --auto --output eDP1 --right-of DP1 --auto
+  "leo-lysvik")
+    xrandr --output DP-2-1 --auto --primary --output DP-2-2 --auto --left-of DP-2-1 --output eDP-1 --off
     ;;
+  "leo-unplugged")
+    xrandr --listmonitors | awk 'NF==4 { print "--output " $4 " --off"}' | xargs xrandr --output eDP-1 --primary --auto
+    ;;
+    # lth
+    #xrandr --output DP-2-3 --primary --auto --output DP-1 --left-of DP-2-3 --auto --output eDP-1 --off
+    #;;
 esac
