@@ -66,6 +66,7 @@ PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg_bold[green]%}%m%{$re
 
 # Alias > Misc
 
+alias unfuck_pulseaudio='pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect'
 alias mb='touch "$(date +%Y%m%d_%H%M%S_%Z).md"'
 alias mpdl='mpd ~/.config/mpd-lasse/mpd.conf'
 alias pj='jq "."'
