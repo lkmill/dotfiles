@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lohfu/dotfiles#readme",
   "dependencies": {
+    "benchmark": "^2.1.4",
     "doctoc": "^2.0.1",
     "domai.nr": "^0.0.2",
     "npm-check-updates": "^11.8.2",

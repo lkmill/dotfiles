@@ -1,0 +1,64 @@
+#!/bin/env node
+
+const Benchmark = require('benchmark')
+const { resolve } = require('path')
+
+const files = process.argv.slice(2)
+
+const suite = new Benchmark.Suite()
+
+suite
+  .on('start', function (event) {
+    this.counter = 0
+
+    // i cannot remember exactly why i wrote the stdout logic like this but it
+    // had something to do with it being difficult to get the name of the process
+    // the results came from depending on if it was the first or not
+    process.stdout.write(this[0].name + ': ')
+  })
+  .on('cycle', function (event) {
+    if (event.target.error) {
+      console.log('error\n')
+      console.log(event.target.error)
+    } else {
+      process.stdout.write(event.target.toString().replace(event.target.name + ' x ', '') + '\n')
+    }
+
+    this.prev = event.target
+
+    var next = this[++this.counter]
+
+    if (next) process.stdout.write(next.name + ': ')
+  })
+  .on('complete', function () {
+    console.log('\nFastest is ' + this.filter('fastest').map('name'))
+  })
+
+files
+  .map(function (file) {
+    return resolve(file)
+  })
+  .reduce(function (promise, file) {
+    return promise.then(async (tests) => {
+      const mod = await import(file)
+
+      if (Array.isArray(mod.default)) {
+        return tests.concat(mod.default)
+      }
+
+      for (const name in mod) {
+        if (name !== 'default' || typeof mod.default === 'function') {
+          tests.push({ name: name, fnc: mod[name] })
+        }
+      }
+
+      return tests
+    })
+  }, Promise.resolve([]))
+  .then(function (tests) {
+    tests.forEach(function (test) {
+      suite.add(test.name, typeof test === 'function' ? test : test.fnc)
+    })
+
+    suite.run({ async: true })
+  })
