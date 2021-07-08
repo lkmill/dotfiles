@@ -128,9 +128,9 @@ handle_image() {
     local mimetype="${1}"
     case "${mimetype}" in
         ## SVG
-        image/svg+xml|image/svg)
-            convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
-            exit 1;;
+        # image/svg+xml|image/svg)
+        #     convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
+        #     exit 1;;
 
         ## DjVu
         # image/vnd.djvu)
@@ -290,7 +290,7 @@ handle_mime() {
             exit 1;;
 
         ## Text
-        application/json | text/* | */xml)
+        text/* | */xml)
             ## Syntax highlight
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
