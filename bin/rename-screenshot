@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+
+import os
+import argparse
+import re
+from subprocess import run
+from datetime import datetime
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('file', type=str, help='File to modify')
+parser.add_argument('url', type=str, help='URL of the screenshot')
+args = parser.parse_args()
+
+mtime = os.path.getmtime(args.file)
+filename, ext = os.path.splitext(args.file)
+
+timestamp = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d_%H%M%S')
+
+formatted_url = re.sub('^https?://', '', args.url)
+formatted_url = re.sub('\?.*$', '', formatted_url)
+formatted_url = re.sub('#.*$', '', formatted_url)
+formatted_url = formatted_url.replace('/', '__')
+
+new_filename = timestamp + '-' + formatted_url + ext
+
+run([ 'exiftool', '-URL=' + args.url, '-overwrite_original', args.file])
+os.utime(args.file, (mtime, mtime))
+
+os.rename(args.file, new_filename)

@@ -1,0 +1,34 @@
+#!/usr/bin/python3
+
+import os
+import argparse
+import re
+from mimetypes import guess_type
+from subprocess import run
+from datetime import datetime
+
+import shlex
+import subprocess
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('file', type=str, help='File to modify')
+parser.add_argument('url', type=str, help='URL of the screenshot')
+args = parser.parse_args()
+
+mtime = os.path.getmtime(args.file)
+result = subprocess.Popen('/usr/bin/file --mime-type ' + shlex.quote(args.file), shell=True, \
+    stdout=subprocess.PIPE).communicate()[0]
+
+mime = re.search(r'[^ ]*(?=\n)', result.decode('utf-8'))[0]
+
+image_mimes = [
+    'image/jpeg',
+    'image/png'
+]
+
+
+tag = 'URL' if mime in image_mimes else 'URLUrl'
+
+run([ 'exiftool', '-' + tag + '=' + args.url, '-overwrite_original', args.file])
+os.utime(args.file, (mtime, mtime))
