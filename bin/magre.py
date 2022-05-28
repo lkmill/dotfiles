@@ -44,42 +44,26 @@ editions = {
     'us': 'US',
 }
 
-re_correct = re.compile(rf'{args.prefix}-((?:20)?[1-2]\d)-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE)
+re_correct = re.compile(rf'{args.prefix}-((?:19|20)\d\d)-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE)
 re_edition = re.compile('|'.join(editions.keys()), re.IGNORECASE)
-# matches: Month DD YY|YYYY
-re_1 = re.compile(rf'({months_str})[^\d]*(0?[1-9]|[1-2]\d|3[0-1])[^\d]*(20[1-2]\d)[^\d]', re.IGNORECASE)
-# matches: DD Month YY|YYYY
-re_2 = re.compile(rf'(0?[1-9]|[1-2]\d|3[0-1])[^\d]*({months_str})[^\d]*(20[1-2]\d)[^\d]', re.IGNORECASE)
-# matches: YY|YYYY Month DD
-re_3 = re.compile(rf'(20[1-2]\d)[^\d]*({months_str})[^\d]*(0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE)
-re_4 = re.compile('((?:20)?[1-2]\d)[^\d](0?[1-9]|1[0-2])[^\d](0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE)
-re_ext = re.compile('\.pdf$')
+regexes = [
+    # matches: DD Month YY|YYYY (needs to be before Month DD YY|YYYY)
+    re.compile(rf'(?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]*(?P<month>{months_str})[^\d]*(?P<year>(?:19|20)?\d\d)[^\d]', re.IGNORECASE),
+    # matches: Month DD YY|YYYY
+    re.compile(rf'(?P<month>{months_str})[^\d]*(?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]*(?P<year>(?:19|20)?\d\d)[^\d]', re.IGNORECASE),
+    # matches: YY|YYYY Month DD
+    re.compile(rf'(?P<year>(?:19|20)?\d\d)[^\d]*(?P<month>{months_str})[^\d]*(?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE),
+    # matches: YY|YYYY M|MM D|DD
+    re.compile('(?P<year>(?:19|20)?\d\d)[^\d](?P<month>0?[1-9]|1[0-2])[^\d](?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE),
+    # matches: YY|YYYYMMDD
+    re.compile('(^|[^\d])(?P<year>(?:19|20)?\d\d)(?P<month>0[1-9]|1[0-2])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE),
+    # matches: DD?MM?YY|YYYY
+    re.compile('(^|[^\d])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<month>0[1-9]|1[0-2])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]', re.IGNORECASE),
+    # matches: MM?DD?YY|YYYY
+    re.compile('(^|[^\d])(?P<month>0[1-9]|1[0-2])[^\d]?(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]', re.IGNORECASE),
+]
+re_ext = re.compile('\.\w+$')
 
-def match_1(filename):
-    m = re_1.search(filename)
-
-    if (m):
-        return [m.group(3), months.index(m.group(1).lower()) + 1, m.group(2)]
-
-def match_2(filename):
-    m = re_2.search(filename)
-
-    if (m):
-        return [m.group(3), months.index(m.group(2).lower()) + 1, m.group(1)]
-
-def match_3(filename):
-    m = re_3.search(filename)
-
-    if (m):
-        return [m.group(1), months.index(m.group(2).lower()) + 1, m.group(3)]
-
-def match_4(filename):
-    m = re_4.search(filename)
-
-    if (m):
-        return [m.group(1),  m.group(2), m.group(3)]
-
-matches = [ match_1, match_2, match_3, match_4 ]
 
 def two_digit(value):
     string = str(value)
@@ -89,20 +73,24 @@ def two_digit(value):
     
     return '0' + string
     
-
+def month_number(value):
+    try:
+        return months.index(value.lower()) + 1
+    except (AttributeError, ValueError):
+        return value
 
 
 for filename in args.files:
-    print(filename)
     if re_correct.match(filename):
-        print('- ' + COLORS.OK + 'ALREADY CORRECT' + COLORS.ENDC)
+        print('- ' + COLORS.OK + 'ALREADY CORRECT: ' + filename + COLORS.ENDC)
         continue
 
+    for idx, regex in enumerate(regexes):
+        m = regex.search(filename)
 
-    for match in matches:
-        result = match(filename)
-
-        if result:
+        if m:
+            print('match ' + str(idx))
+            result = [m.group('year'),  month_number(m.group('month')), m.group('day')]
             ext = re_ext.search(filename)
             edition = re_edition.search(filename)
             [ year, month, day ] = result
@@ -123,7 +111,8 @@ for filename in args.files:
 
             os.rename(filename, new_filename)
 
-            print('- ' + COLORS.SUCCESS + 'RENAMED: ' + new_filename + COLORS.ENDC)
+            print('- ' + COLORS.SUCCESS + 'RENAMED: ' + filename + ' -> ' + new_filename + ' (match ' + str(idx) + ')' + COLORS.ENDC)
             break
     else:
-        print('- ' + COLORS.FAIL + 'NO MATCH!!!!' + COLORS.ENDC)
+        print('- ' + COLORS.FAIL + 'NO MATCH: ' + filename + COLORS.ENDC)
+
