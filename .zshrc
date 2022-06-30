@@ -29,6 +29,8 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 
 # Fish-like Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Fish-like autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # FZF 
 FZF_CTRL_R_OPTS='--reverse'
