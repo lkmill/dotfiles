@@ -1,0 +1,19 @@
+#! /bin/bash
+
+
+if [ -p /dev/stdin ]; then
+  echo "Data was piped to this script!"
+
+  date=$(date +%F-%H%M%S)
+  capture=$(mktemp -t maim_$date.XXXXX)
+  cat > $capture
+  dim=$(ffprobe -hide_banner $capture 2>&1 | grep -Po '([0-9]+x[0-9]+)')
+
+  echo "Dimensions: $dim"
+  target_dir=$1
+  mv -v $capture $target_dir/${date}_${dim}_maim.png
+else
+  echo "No input was found on stdin, skipping!"
+  exit 1
+fi
+
