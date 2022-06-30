@@ -292,6 +292,8 @@ bindsym $mod+Ctrl+$right focus output right
 ## move workspace to left/right output
 bindsym $mod+Shift+Ctrl+$left move workspace to output left
 bindsym $mod+Shift+Ctrl+$right move workspace to output right
+bindsym $mod+Shift+Ctrl+$up move workspace to output up
+bindsym $mod+Shift+Ctrl+$down move workspace to output down
 
 # resize window bindings ($mod + right mouse works too)
 bindsym $mod+Shift+y       resize shrink width 5 px or 5 ppt
