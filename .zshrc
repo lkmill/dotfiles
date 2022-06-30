@@ -93,6 +93,7 @@ alias ls='LC_ALL=C ls -F --color=auto' #LC_ALL=c sorts hidden files first (and i
 alias vim='nvim'
 alias xsel='xsel --logfile $HOME/.log/xsel.log'
 alias ngrep='grep --exclude-dir=.git/ --exclude-dir node_modules/ -r'
+alias p='paru'
 
 # Alias > SSH Mounting
 
@@ -127,6 +128,7 @@ alias nud='npm uninstall --save-dev'
 alias nus='npm uninstall --save'
 alias nU='npm update'
 
+alias y='yarn'
 alias yr='yarn run'
 alias ya='yarn add'
 alias yad='yarn add -D'
