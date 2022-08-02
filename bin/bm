@@ -46,9 +46,11 @@ files
         return tests.concat(mod.default)
       }
 
-      for (const name in mod) {
-        if (name !== 'default' || typeof mod.default === 'function') {
-          tests.push({ name: name, fnc: mod[name] })
+      const obj = mod.default || mod
+
+      for (const name in obj) {
+        if (name !== 'default' || typeof obj.default === 'function') {
+          tests.push({ name: name, fn: obj[name] })
         }
       }
 
@@ -57,7 +59,7 @@ files
   }, Promise.resolve([]))
   .then(function (tests) {
     tests.forEach(function (test) {
-      suite.add(test.name, typeof test === 'function' ? test : test.fnc)
+      suite.add(test.name, test)
     })
 
     suite.run({ async: true })
