@@ -24,7 +24,7 @@ fi
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
-source ~/bin/set-screens
+source ~/bin/set-screens $2
 
 ~/.fehbg
 
