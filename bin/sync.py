@@ -12,6 +12,7 @@ default_dirs = [
   '.password-store',
   '.ssh',
   '.vault',
+  '.zotero',
   'bin',
   'biz',
   'cfg',
