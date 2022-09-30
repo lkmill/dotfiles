@@ -17,3 +17,5 @@ export LESS_TERMCAP_so=$'\E[01;35m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# for matlab
+export LD_PRELOAD=/lib64/libfreetype.so
