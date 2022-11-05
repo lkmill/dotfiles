@@ -41,16 +41,11 @@ def sync(params, dirs, server_dir):
     if (args.dry_run):
         params += 'n'
 
-    print(dirs)
     dirs = map(lambda x: os.path.join(src, x), dirs)
-
-    print(dirs)
 
     command = ['rsync', params, '--delete', '--filter=: .rsync']
     command.extend(dirs)
     command.append(dest)
-
-    print(command)
 
     run(command)
 
