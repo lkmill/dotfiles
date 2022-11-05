@@ -80,6 +80,7 @@ alias fchmod='find . -type f -exec chmod 644 {} \;'
 alias dchmod='find . -type d -exec chmod 755 {} \;'
 # usage: $ xsel | x509
 alias x509="sed 's/\\\\n/\\n/g' | openssl x509 -text -noout"
+alias bat="cat /sys/class/power_supply/BAT0/capacity"
 
 # Alias > ZSH
 
@@ -104,6 +105,7 @@ alias smm-putte='sshfs lohfu@putte:/mnt/storage/music /mnt/music'
 alias smm='sshfs lohfu@loader:/mnt/storage/music /mnt/music'
 alias smm-i='sshfs lohfu@192.168.1.50:/mnt/storage/music /mnt/music'
 alias smn='sshfs lohfu@loader:/mnt/storage/new /mnt/new'
+alias smp='sshfs lohfu@loader:/home/lohfu/photos /mnt/photos'
 alias smt='sshfs lohfu@loader:/mnt/torrents /mnt/torrents'
 
 # Alias > Mining
@@ -119,6 +121,7 @@ alias mine-cpu-nist5="cpuminer -a nist5 -o stratum+tcp://nist5.eu.nicehash.com:3
 
 # Alias > NPM, yarn
 
+alias n='npm'
 alias ni='npm install'
 alias nid='npm install --save-dev'
 alias nis='npm install --save'
@@ -129,9 +132,14 @@ alias nus='npm uninstall --save'
 alias nU='npm update'
 
 alias y='yarn'
-alias yr='yarn run'
+
 alias ya='yarn add'
 alias yad='yarn add -D'
+alias yi='yarn init -y'
+alias yo='yarn outdated'
+alias yr='yarn run'
+alias yu='yarn upgrade'
+alias yui='yarn upgrade-interactive'
 
 # Alias > Task
 
