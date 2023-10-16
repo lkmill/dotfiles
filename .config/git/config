@@ -30,7 +30,7 @@
     # reset (checkout) modifed files
     fcf = "!git ls-files -m | fzf --print0 -m | xargs -0 -t git checkout"
     # git rebase -i specific commit
-    fr = "!git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --tac +s +m -e --ansi --reverse  | sed 's/ .*//' | sed 's/$/^/' | xargs git rebase -i"
+    fr = "!git log --color=always --pretty=oneline --abbrev-commit --reverse | fzf --tac +s +m -e --ansi --reverse  | sed 's/ .*//' | sed 's/$/^/' | xargs git rebase -i \"$@\""
 [core]
 	autocrlf = false
 [init]
