@@ -202,6 +202,9 @@ alias msn='mongo mongo.newseri.com/newseri -u newseri-supreme -p'
 alias msp='mongo mongo.mypaper.io/mypaper-dev -u mypaper-supreme -p'
 alias mspw='mongo mongo.mypaper.io/mypaper-website-dev -u mypaper-supreme -p'
 
+image_to_clipboard() {
+  xclip -selection clipboard -t $(file --mime-type -b $@) -i $@
+}
 # functions > sync
 
 backup() {
