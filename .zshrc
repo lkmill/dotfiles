@@ -179,6 +179,10 @@ alias gsp='git stash push'
 alias gsP='git stash pop'
 alias gss='git stash show'
 
+# Alias > Docker
+
+alias d='docker'
+
 # Alias > C++
 
 alias gpp='g++ -Wall -Wextra -pedantic-errors -Wold-style-cast -std=c++11'
