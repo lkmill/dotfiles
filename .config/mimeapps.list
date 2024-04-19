@@ -5,7 +5,11 @@ x-scheme-handler/https=firefox.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
 x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 image/jpeg=chromium.desktop;
+image/heif=gimp.desktop;
+application/x-maple-worksheet=/home/lohfu/.local/share/applications/maple2022.desktop
