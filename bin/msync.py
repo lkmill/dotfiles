@@ -5,7 +5,7 @@ import argparse
 from subprocess import run
 
 storage_root = '/mnt/storage'
-home_root = '~'
+home_root = '~/'
 
 home_dirs = [
   'archives',
