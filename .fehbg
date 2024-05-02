@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill '/home/lohfu/img/wallpapers/2560x1440/614437-anime-artwork-fantasy-art-grass-howls-moving-castle-landscapes-nature-running-skies-steam-steampunk.jpg' 
+feh --no-fehbg --bg-fill '/home/lohfu/img/wallpapers/4k/blue-and-purple-cosmic-star-wallpaper-man-and-dog-standing-on-top-of-planet-painting-wallpaper-hvw.jpg'
