@@ -52,8 +52,6 @@ packer.startup(function ()
   use('christoomey/vim-tmux-navigator')
   use('jiangmiao/auto-pairs')
 
-  use('/home/lohfu/dev/nvim-join')
-
   if bootstrapped then
 	packer.sync()
 	end
