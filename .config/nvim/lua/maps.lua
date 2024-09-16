@@ -1,4 +1,4 @@
-local map = require('usr.util').map
+local map = require('util').map
 
 ---- MAPPINGS 
 vim.g.mapleader = ' '
@@ -77,9 +77,6 @@ map('n', '<leader>cw', ':e ~/.config/sway/config<CR>')
 map('n', '<leader>cz', ':e ~/.zshrc<CR>')
 map('n', '<leader>Cv', ':luafile ~/.config/nvim/init.lua<CR>', false)
 map('n', '<keader>Cc', ':source ~/.vim/colors/sup3rman.vim<CR>')
-
--- mappings > ranger
-map('n', '<leader>r', ':RnvimrToggle<CR>')
 
 -- mappings > use <C-n> and <C-p> to cycle through buffers
 map('n', '<C-n>', ':bnext<CR>')
