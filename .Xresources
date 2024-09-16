@@ -1,7 +1,8 @@
 ! this is to prevent the annoying yellow box when Ctrl-Shift is pressed
 urxvt.iso14755 : false
-urxvt.font:	-misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1,xft:Deja Vu Sans:pixelsize=14
+!urxvt.font:	-misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1,xft:Deja Vu Sans:pixelsize=14
 !urxvt.font: xft:Misc Tamsyn:pixelsize=14,xft:Deja Vu Sans:pixelsize=14
+urxvt.font: xft:Misc Tamsyn:pixelsize=14
 
 urxvt.scrollBar: false
 urxvt.savelines: 8192
