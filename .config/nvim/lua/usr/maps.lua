@@ -69,11 +69,14 @@ map('n', '<leader>gb', ':Git blame<CR>')
 map('n', '<leader>gB', ':Git blame -w<CR>')
 
 -- mappings > editing and sourcing vim configs
+map('n', '<leader>cg', ':e ~/.config/git/config<CR>')
 map('n', '<leader>ci', ':e ~/.config/i3/config<CR>')
+map('n', '<leader>cs', ':e ~/.ssh/config<CR>')
 map('n', '<leader>cv', ':e ~/.config/nvim/init.lua<CR>')
+map('n', '<leader>cw', ':e ~/.config/sway/config<CR>')
 map('n', '<leader>cz', ':e ~/.zshrc<CR>')
-map('n', '<leader>csv', ':luafile ~/.config/nvim/init.lua<CR>', false)
-map('n', '<keader>csc', ':source ~/.vim/colors/sup3rman.vim<CR>')
+map('n', '<leader>Cv', ':luafile ~/.config/nvim/init.lua<CR>', false)
+map('n', '<keader>Cc', ':source ~/.vim/colors/sup3rman.vim<CR>')
 
 -- mappings > ranger
 map('n', '<leader>r', ':RnvimrToggle<CR>')
