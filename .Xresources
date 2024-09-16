@@ -4,6 +4,7 @@ urxvt.font:	-misc-tamsyn-medium-r-normal--14-101-100-100-c-70-iso8859-1,xft:Deja
 !urxvt.font: xft:Misc Tamsyn:pixelsize=14,xft:Deja Vu Sans:pixelsize=14
 
 urxvt.scrollBar: false
+urxvt.savelines: 8192
 urxvt.internalBorder: 10
 
 urxvt.perl-ext-common:    default,url-select,font-size
