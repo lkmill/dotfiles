@@ -1,23 +1,77 @@
-set $main-display eDP-1
-set $right-display eDP-1
-set $left-display eDP-1
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+include /etc/sway/config.d/*
+
+set $black          #26292C
+set $grey           #64645e
+set $red            #e95678
+set $lightred       #f92672
+set $green          #a6e22e
+set $lightgreen     #9EC400
+set $yellow         #e6db74
+set $lightyellow    #E7C547
+set $blue           #66d9ef
+set $lightblue      #7AA6DA
+set $magenta        #ae81ff
+set $lightmagenta   #B77EE0
+set $cyan           #A1EFE4
+set $lightcyan      #54CED6
+set $white          #f8f8f0
+set $lightwhite     #FFFFFF
+set $darkwhite      #dddddd
+set $darkblack      #000000
+set $lightblack     #383838
 
 gaps inner 6
-#gaps outer 15
+gaps outer 0
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
+
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $blue       $blue       $darkblack  $blue        $blue
+client.unfocused        $black      $black      $lightwhite $red        $black
+client.focused_inactive $lightblack $lightblack $lightwhite  $black      $black
+client.urgent           $red        $red        $black      $red        $red
+client.background       $black
+
+input type:touchpad {
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+  pointer_accel 0.3
+}
+
+input type:pointer {
+  left_handed enabled
+}
+
+input type:keyboard {
+  xkb_layout us,se
+  xkb_options grp:alt_shift_toggle,ctrl:nocaps
+}
+
+bar {
+  position top
+  status_command i3status
+  font pango:mono 10
+  mode dock
+  # modifier None
+  tray_output primary
+
+  colors {
+    background $darkblack
+    statusline $darkwhite
+    separator $cyan
+    focused_workspace  $lightblue $blue $black
+    active_workspace   $lightblue $lightblue $white
+    inactive_workspace $black $black $lightwhite
+    urgent_workspace   $black $black $lightwhite
+  }
+
+}
+
+# exec swayidle -w timeout 2 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -29,30 +83,13 @@ font pango:monospace 8
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-    tap enabled
-}
 
-input "1739:30383:DELL07E6:00_06CB:76AF_Touchpad" {
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-}
-
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_layout us,se
-    xkb_options ctrl:nocaps,grp:alt_shift_toggle 
-
-}
-
-    # natural_scroll enabled
-    # middle_emulation enabled
+# mod keys
 set $mod Mod4
 set $hyper Mod3
 set $alt Mod1
 
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
+# direction keys
 set $up k
 set $down j
 set $left h
@@ -61,70 +98,81 @@ set $right l
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec termite
+# reload the configuration file
+bindsym $mod+Shift+c reload
 
-# kill focused window
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# application bindings
+bindsym $mod+Return exec --no-startup-id $TERMINAL
+bindsym $mod+t exec --no-startup-id $TERMINAL
+bindsym $mod+r exec --no-startup-id $TERMINAL -e $FILE
+
+# rofi
+# bindsym $mod+d exec --no-startup-id rofi -show run -hlfg "#ffb964" -o 85
+bindsym $mod+d exec --no-startup-id wofi --show=drun --allow-images --term=/usr/bin/foot --insensitive
+bindsym $mod+Shift+d exec dmenu_run
+bindsym $mod+grave exec --no-startup-id rofi -show window
+bindsym $mod+Ctrl+e exec rofimoji
+
+# window bindings
+
+## kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+BackSpace kill
 
-bindsym $mod+d exec --no-startup-id rofi -show run -hlfg "#ffb964" -o 85
-bindsym $mod+Shift+d exec dmenu_run
-bindsym $mod+grave exec --no-startup-id rofi -show window
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
+## change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+## move focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+## split in horizontal orientation
 bindsym $mod+c split h
 
-# split in vertical orientation
+## split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+## enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+## change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+## toggle tiling / floating
+bindsym $mod+Ctrl+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
+bindsym $mod+space floating toggle
 
-# focus the parent container
+## focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+## focus the child container
+#bindsym $mod+c focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -133,11 +181,7 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-#rename workspace 3 to "3: www"
-
-# switch to workspace
-bindsym $mod+Tab workspace back_and_forth
-
+# workspaces
 set $ws1 1:www
 set $ws2 2:chat
 set $ws3 3:editor
@@ -146,28 +190,34 @@ set $ws5 5:files
 set $ws6 6:jot
 set $ws7 7:gra
 set $ws8 8:staging
-set $ws9 9
+set $ws9 9:dev
 set $ws10 0
 
 set $ws-music music
 set $ws-xtra xtra
 set $ws-vm vm
 
-workspace $ws1 output $main-display
-workspace $ws2 output $main-display
-workspace $ws3 output $main-display
-workspace $ws4 output $main-display
-workspace $ws5 output $main-display
-workspace $ws6 output $main-display
-workspace $ws7 output $main-display
-workspace $ws8 output $main-display
-workspace $ws9 output $main-display
-workspace $ws10 output $main-display
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws10 output primary
 
-workspace $ws-music output $right-display
-workspace $ws-xtra output $right-display
-workspace $ws-vm output $right-display
+workspace $ws-music output primary
+workspace $ws-xtra output primary
+workspace $ws-vm output primary
 
+# workspace bindings
+
+## toggle focus
+bindsym $mod+Tab workspace back_and_forth
+
+## focus
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -188,6 +238,7 @@ bindsym $hyper+j workspace $ws6
 bindsym $hyper+z workspace $ws6
 bindsym $hyper+g workspace $ws7
 bindsym $hyper+s workspace $ws8
+bindsym $hyper+d workspace $ws9
 
 bindsym $hyper+a workspace $ws-music
 bindsym $hyper+m workspace $ws-music
@@ -203,13 +254,14 @@ bindsym $mod+$alt+j workspace $ws6
 bindsym $mod+$alt+z workspace $ws6
 bindsym $mod+$alt+g workspace $ws7
 bindsym $mod+$alt+s workspace $ws8
+bindsym $mod+$alt+d workspace $ws9
 
 bindsym $mod+$alt+a workspace $ws-music
 bindsym $mod+$alt+m workspace $ws-music
 bindsym $mod+$alt+x workspace $ws-xtra
 bindsym $mod+$alt+v workspace $ws-vm
 
-# move focused container to workspace
+## move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -230,14 +282,13 @@ bindsym $hyper+Shift+j move container to workspace $ws6
 bindsym $hyper+Shift+z move container to workspace $ws6
 bindsym $hyper+Shift+g move container to workspace $ws7
 bindsym $hyper+Shift+s move container to workspace $ws8
+bindsym $hyper+Shift+d move container to workspace $ws9
 
 bindsym $hyper+Shift+a move container to workspace $ws-music
 bindsym $hyper+Shift+m move container to workspace $ws-music
 bindsym $hyper+Shift+x move container to workspace $ws-xtra
 bindsym $hyper+Shift+v move container to workspace $ws-vm
 
-## 
-#
 bindsym $mod+$alt+Shift+w move container to workspace $ws1
 bindsym $mod+$alt+Shift+c move container to workspace $ws2
 bindsym $mod+$alt+Shift+e move container to workspace $ws3
@@ -247,65 +298,50 @@ bindsym $mod+$alt+Shift+j move container to workspace $ws6
 bindsym $mod+$alt+Shift+z move container to workspace $ws6
 bindsym $mod+$alt+Shift+g move container to workspace $ws7
 bindsym $mod+$alt+Shift+s move container to workspace $ws8
+bindsym $mod+$alt+Shift+d move container to workspace $ws9
 
 bindsym $mod+$alt+Shift+a move container to workspace $ws-music
 bindsym $mod+$alt+Shift+m move container to workspace $ws-music
 bindsym $mod+$alt+Shift+x move container to workspace $ws-xtra
 bindsym $mod+$alt+Shift+v move container to workspace $ws-vm
 
+## focus on left/right output
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$right focus output right
+bindsym $mod+Ctrl+$up focus output up
+bindsym $mod+Ctrl+$down focus output down
 
+## move workspace to left/right output
 bindsym $mod+Shift+Ctrl+$left move workspace to output left
 bindsym $mod+Shift+Ctrl+$right move workspace to output right
+bindsym $mod+Shift+Ctrl+$up move workspace to output up
+bindsym $mod+Shift+Ctrl+$down move workspace to output down
 
-# reload the configuration file
-bindsym $mod+Shift+c exec ~/.config/i3/build-config; reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec ~/.config/i3/build-config; restart
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'sway-msg exit'"
+# resize window bindings ($mod + right mouse works too)
+bindsym $mod+Shift+y       resize shrink width 5 px or 5 ppt
+bindsym $mod+Shift+u       resize grow height 5 px or 5 ppt
+bindsym $mod+Shift+i       resize shrink height 5 px or 5 ppt
+bindsym $mod+Shift+o       resize grow width 5 px or 5 ppt
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# volume bindings
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym $mod+Next exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym $mod+Prior exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 5 px or 5 ppt
-        bindsym $down       resize grow height 5 px or 5 ppt
-        bindsym $up         resize shrink height 5 px or 5 ppt
-        bindsym $right      resize grow width 5 px or 5 ppt
+## music
+bindsym Pause exec "i3_music_toggle"
+bindsym XF86AudioPlay exec "i3_music_toggle"
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 5 px or 5 ppt
-        bindsym Down        resize grow height 5 px or 5 ppt
-        bindsym Up          resize shrink height 5 px or 5 ppt
-        bindsym Right       resize grow width 5 px or 5 ppt
+bindsym XF86AudioPrev exec "i3_music_prev"
+bindsym $mod+Shift+Prior exec "i3_music_prev"
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym Control+bracketleft mode "default"
-}
+bindsym XF86AudioNext exec "i3_music_next"
+bindsym $mod+Shift+Next exec "i3_music_next"
 
-bindsym $mod+r mode "resize"
-
-## mpd
-
-bindsym XF86AudioLowerVolume exec "amixer set Master 4%-"
-bindsym XF86AudioRaiseVolume exec "amixer set Master 4%+"
-bindsym XF86AudioMute exec "amixer set Master toggle"
-
-bindsym XF86AudioPrev exec "mpc prev"
-bindsym XF86AudioNext exec "mpc next"
-bindsym XF86AudioPlay exec "mpc toggle"
-
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-# bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+# bindsym XF86MonBrightnessUp  exec "xbacklight -inc 10"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
@@ -318,29 +354,17 @@ bindsym $mod+Shift+F6 exec "~/bin/rate 0"
 bindsym $mod+Shift+F7 exec "~/bin/rate 7"
 bindsym $mod+Shift+F8 exec "~/bin/rate 8"
 
-# bindsym $mod+Next exec "amixer set Master 4%-"
-# bindsym $mod+Prior exec "amixer set Master 4%+"
-bindsym $mod+Next exec " pactl set-sink-volume @DEFAULT_SINK@ -4%"
-bindsym $mod+Prior exec " pactl set-sink-volume @DEFAULT_SINK@ +4%"
-bindsym $mod+Shift+Next exec "mpc next"
-bindsym $mod+Shift+Prior exec "mpc prev"
-bindsym Pause exec "mpc toggle"
-
 bindsym $mod+Pause exec "i3lock -c 282828"
-bindsym Shift+$mod+Pause exec "i3lock -c 282828 && systemctl suspend"
-bindsym XF86Sleep exec "i3lock -c 282828 && systemctl suspend"
+# bindsym Shift+$mod+Pause exec "i3lock -c 282828 && systemctl suspend"
+bindsym Shift+$mod+Pause exec "systemctl suspend && swaylock -c 222222"
+bindsym XF86Sleep exec "systemctl suspend && swaylock -c 222222"
 
-bindsym Print exec "scrot -e 'mv $f ~/img/screenshots/ 2>/dev/null'"
-bindsym $mod+Print exec "scrot -ue 'mv $f ~/img/screenshots/ 2>/dev/null'"
-bindsym Control+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots/ 2>/dev/null'"
-bindsym Shift+Print exec "sleep 0.2; scrot -se 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
-bindsym Shift+Control+Print exec "scrot -e 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
-bindsym $mod+Shift+Print exec "scrot -ue 'mv $f ~/img/screenshots-inspiration/ 2>/dev/null'"
+bindsym Print exec "/usr/share/sway-contrib/grimshot save screen - | save-screenshot ~/img/screenshots/"
+bindsym $mod+Print exec "/usr/share/sway-contrib/grimshot save active - | save-screenshot ~/img/screenshots/"
+bindsym Control+Print exec "/usr/share/sway-contrib/grimshot save area - | save-screenshot ~/img/screenshots/"
+bindsym Shift+Print exec "/usr/share/sway-contrib/grimshot save area - | save-screenshot ~/img/screenshots-inspiration/"
+bindsym Shift+Control+Print exec "/usr/share/sway-contrib/grimshot save screen - | save-screenshot ~/img/screenshots-inspiration/"
+bindsym $mod+Shift+Print exec "/usr/share/sway-contrib/grimshot save active - | save-screenshot ~/img/screenshots-inspiration/"
 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        position top
-        status_command i3status
-}
+include "workspaces-$(cat /etc/hostname)"
+include "outputs-$(cat /etc/hostname)"
