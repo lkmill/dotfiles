@@ -1,3 +1,4 @@
+-- TODO check if any should be nmap whateves
 local map = require('util').map
 
 ---- MAPPINGS 
@@ -5,6 +6,7 @@ vim.g.mapleader = ' '
 vim.g.tmux_navigator_no_mappings = 1
 
 map('n', '<leader>n', ':setlocal relativenumber!<CR>')
+
 
 -- navigate windows
 map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
@@ -19,7 +21,6 @@ map('n', '<M-Up>', ':resize +2<CR>')
 map('n', '<M-Down>', ':resize -2<CR>')
 map('n', '<M-Left>', ':vertical resize -2<CR>')
 map('n', '<M-Right>', ':vertical resize +2<CR>')
-
 
 -- change current working directory
 map('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>')
@@ -72,11 +73,12 @@ map('n', '<leader>gB', ':Git blame -w<CR>')
 map('n', '<leader>cg', ':e ~/.config/git/config<CR>')
 map('n', '<leader>ci', ':e ~/.config/i3/config<CR>')
 map('n', '<leader>cs', ':e ~/.ssh/config<CR>')
+map('n', '<leader>ct', ':e ~/.tmux.conf<CR>')
 map('n', '<leader>cv', ':e ~/.config/nvim/init.lua<CR>')
 map('n', '<leader>cw', ':e ~/.config/sway/config<CR>')
 map('n', '<leader>cz', ':e ~/.zshrc<CR>')
 map('n', '<leader>Cv', ':luafile ~/.config/nvim/init.lua<CR>', false)
-map('n', '<keader>Cc', ':source ~/.vim/colors/sup3rman.vim<CR>')
+map('n', '<leader>Cc', ':source ~/.vim/colors/sup3rman.vim<CR>')
 
 -- mappings > use <C-n> and <C-p> to cycle through buffers
 map('n', '<C-n>', ':bnext<CR>')
@@ -107,3 +109,14 @@ map('n', '<M-C-p>', ':tabprev<CR>')
 
 -- mappings > replace word under cursor
 map('n', '<leader>s', ':%s/<C-R><C-W>/', false)
+
+-- SWE > ENG ---
+
+map('i', '<C-å>', '<esc>')
+
+map('n', 'å', '[')
+map('n', 'Å', '{')
+map('n', 'ö', ';')
+map('n', 'Ö', ':')
+map('n', 'ä', "'")
+map('n', 'Ä', '"')
