@@ -36,7 +36,7 @@ client.background       $black
 
 bar {
   position top
-  status_command i3blocks
+  status_command i3status
   font pango:mono 10
   mode dock
   modifier None
