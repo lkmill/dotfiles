@@ -1,0 +1,21 @@
+cmd bulkrename ${{
+    vimv -- $(basename -a -- $fx)
+
+    lf -remote "send $id load"
+    lf -remote "send $id unselect"
+}}
+
+cmd bulkrename2 ${{
+    clear
+    qmv -d -- $fx
+    lf -remote "send $id unselect"
+}}
+
+map R bulkrename
+
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+map C edit-config
