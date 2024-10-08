@@ -29,8 +29,6 @@ data.location=~/.local/share/task/
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
-#taskd.certificate=\/home\/sup3rman\/.task\/linus_miller.cert.pem
-#taskd.key=\/home\/sup3rman\/.task\/linus_miller.key.pem
-#taskd.ca=\/home\/sup3rman\/.task\/ca.cert.pem
 #taskd.server=sexpanther.se:52345
 report.next.filter=status:pending limit:page -fun -learn -setup
+news.version=3.1.0
