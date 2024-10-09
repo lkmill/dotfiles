@@ -1,34 +1,26 @@
-# [Created by task 2.4.0 1/13/2015 13:57:07]
-# Taskwarrior program configuration file.
-# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
-# 'man task-sync' or 'man taskrc'
-
-# Here is an example of entries that use the default, override and blank values
-#   variable=foo   -- By specifying a value, this overrides the default
-#   variable=      -- By specifying no value, this means no default
-#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
-
-# Use the command 'task show' to see all defaults and overrides
-
-# Files
 data.location=~/.local/share/task/
 
-# Color theme (uncomment one to use)
-#include /usr/share/doc/task/rc/light-16.theme
-#include /usr/share/doc/task/rc/light-256.theme
-#include /usr/share/doc/task/rc/dark-16.theme
-#include /usr/share/doc/task/rc/dark-256.theme
-#include /usr/share/doc/task/rc/dark-red-256.theme
-#include /usr/share/doc/task/rc/dark-green-256.theme
-#include /usr/share/doc/task/rc/dark-blue-256.theme
-#include /usr/share/doc/task/rc/dark-violets-256.theme
-#include /usr/share/doc/task/rc/dark-yellow-green.theme
-#include /usr/share/doc/task/rc/dark-gray-256.theme
-#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
-#include /usr/share/doc/task/rc/solarized-dark-256.theme
-#include /usr/share/doc/task/rc/solarized-light-256.theme
-#include /usr/share/doc/task/rc/no-color.theme
-
-#taskd.server=sexpanther.se:52345
-report.next.filter=status:pending limit:page -fun -learn -setup
 news.version=3.1.0
+
+default.command=today
+
+uda.pin.type=numeric
+uda.pin.label=pin
+
+report.yesterday.description=proof of my brilliance
+report.yesterday.columns=id,priority,project,tags,description.count,due
+report.yesterday.labels=id,p,proj,tags,desc,due
+report.yesterday.sort=pin-,due
+report.yesterday.filter=+day and due.after:yesterday and due.before:today
+
+report.today.description=my sweet new plan for the day
+report.today.columns=id,start.age,priority,project,tags,description.count,due,until.remaining
+report.today.labels=id,a,p,proj,tags,desc,due,until
+report.today.sort=pin-,due
+report.today.filter=+day and due.before:tomorrow (status:pending or (status:completed and due.after:today))
+
+report.tomorrow.description=my sweet new follow-up plan for the next day
+report.tomorrow.columns=id,start.age,priority,project,tags,description.count,due,until.remaining
+report.tomorrow.labels=id,a,p,proj,tags,desc,due,until
+report.tomorrow.sort=pin-,due
+report.tomorrow.filter=+day due.after:tomorrow due.before:tomorrow+1d
