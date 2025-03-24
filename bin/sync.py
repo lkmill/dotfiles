@@ -36,17 +36,20 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('-B', '--backup', help='Backup files to the remote location', action='store_true')
 group.add_argument('-R', '--restore', help='Restore files from the remote location', action='store_true')
 parser.add_argument('-d', '--dry-run', help='Run rsync in a dry run', action='store_true')
-parser.add_argument('-r', '--remote', help='The remote location', default='lohfu@loader:~/home')
-parser.add_argument('-l', '--local', help='The local location', default=os.environ['HOME'])
+parser.add_argument('-s', '--server', help='The remote location', default='lohfu@loader')
+parser.add_argument('-r', '--remote-dir', help='The remote location', default='~/home')
+parser.add_argument('-l', '--local-dir', help='The local location', default=os.environ['HOME'])
 parser.add_argument('dir', type=str, nargs='*', help='the directories to copy', default=default_dirs)
 args = parser.parse_args()
 
+remote = f"{args.server}:{args.remote_dir}"
+
 if (args.backup): 
-    src = args.local
-    dest = args.remote
+    src = args.local_dir
+    dest = remote
 else:
-    src = args.remote
-    dest = args.local
+    src = remote
+    dest = args.local_dir
 
 def sync(params, dirs):
     if (args.dry_run):
