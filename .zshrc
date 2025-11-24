@@ -80,7 +80,7 @@ alias fchmod='find . -type f -exec chmod 644 {} \;'
 alias dchmod='find . -type d -exec chmod 755 {} \;'
 # usage: $ xsel | x509
 alias x509="sed 's/\\\\n/\\n/g' | openssl x509 -text -noout"
-alias bat="cat /sys/class/power_supply/BAT0/capacity"
+# alias bat="cat /sys/class/power_supply/BAT0/capacity"
 
 # Alias > ZSH
 
@@ -121,15 +121,17 @@ alias mine-cpu-nist5="cpuminer -a nist5 -o stratum+tcp://nist5.eu.nicehash.com:3
 
 # Alias > NPM, yarn
 
-alias n='npm'
-alias ni='npm install'
-alias nid='npm install --save-dev'
-alias nis='npm install --save'
-alias nr='npm run'
-alias nu='npm uninstall'
-alias nud='npm uninstall --save-dev'
-alias nus='npm uninstall --save'
-alias nU='npm update'
+alias n='pnpm'
+alias ni='pnpm install'
+alias na='pnpm add'
+alias nad='pnpm add --save-dev'
+alias nao='pnpm add --save-optional'
+alias nr='pnpm run'
+alias nu='pnpm uninstall'
+alias nud='pnpm uninstall --save-dev'
+alias nuo='pnpm uninstall --save-optional'
+alias nup='pnpm uninstall --save-prod'
+alias nU='pnpm update'
 
 alias y='yarn'
 
@@ -143,8 +145,13 @@ alias yui='yarn upgrade-interactive'
 
 # Alias > Task
 
+alias t='task'
 alias ta='task add'
-alias tm='task modify'
+alias tc='task calc'
+alias ti='task info'
+alias tl='task list'
+alias td='task delete'
+alias tm='task mod'
 
 # Alias > Git
 
