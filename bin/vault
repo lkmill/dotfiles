@@ -4,9 +4,9 @@ PASSWD_PATH=$HOME/jot/_passwd
 PLANS_PATH=$HOME/jot/_plans
 PRIVATE_PATH=$HOME/jot/_private
 
-PASSWD_FILE=$HOME/.vault/passwd.tc
-PLANS_FILE=$HOME/.vault/plans.tc
-PRIVATE_FILE=$HOME/.vault/private.tc
+PASSWD_FILE=$HOME/.vault/passwd.hc
+PLANS_FILE=$HOME/.vault/plans.hc
+PRIVATE_FILE=$HOME/.vault/private.hc
 
 file=
 path=
