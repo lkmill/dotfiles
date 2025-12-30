@@ -25,6 +25,7 @@ group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('-B', '--backup', help='Backup files to the remote location', action='store_true')
 group.add_argument('-R', '--restore', help='Restore files from the remote location', action='store_true')
 parser.add_argument('-d', '--dry-run', help='Run rsync in a dry run', action='store_true')
+parser.add_argument('-m', '--merge', help='Do not delete files', action='store_true')
 parser.add_argument('-r', '--remote', help='The remote location', default='lohfu@loader')
 parser.add_argument('-l', '--local', help='The local location', default=os.path.join(os.environ['HOME'], 'media'))
 parser.add_argument('dir', type=str, nargs='*', help='the directories to copy', default=home_dirs + storage_dirs)
@@ -43,7 +44,11 @@ def sync(params, dirs, server_dir):
 
     dirs = map(lambda x: os.path.join(src, x), dirs)
 
-    command = ['rsync', params, '--delete', '--filter=: .rsync']
+    command = ['rsync', params, '--filter=: .rsync']
+
+    if (not args.merge):
+        command.append('--delete')
+
     command.extend(dirs)
     command.append(dest)
 
