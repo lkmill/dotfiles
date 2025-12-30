@@ -2,17 +2,18 @@
 
 
 if [ -p /dev/stdin ]; then
+  echo $0
   echo "Data was piped to this script!"
 
   date=$(date +%F-%H%M%S)
   capture=$(mktemp -t maim_$date.XXXXX)
   cat > $capture
-  xclip -selection clipboard -t $(file --mime-type -b $capture) -i $capture
+  cat $capture | wl-copy -t $(file --mime-type -b $capture)
   dim=$(ffprobe -hide_banner $capture 2>&1 | grep -Po '([0-9]+x[0-9]+)')
 
   echo "Dimensions: $dim"
   target_dir=$1
-  mv -v $capture $target_dir/${date}_${dim}_maim.png
+  mv -v $capture $target_dir/${date}_${dim}_grimshot.png
 else
   echo "No input was found on stdin, skipping!"
   exit 1
