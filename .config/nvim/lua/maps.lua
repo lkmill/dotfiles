@@ -110,6 +110,7 @@ map('n', '<M-C-p>', ':tabprev<CR>')
 
 -- mappings > replace word under cursor
 map('n', '<leader>s', ':%s/<C-R><C-W>/', false)
+map('n', '<leader>S', ':%s/\\<<C-R><C-W>\\>/', false)
 
 -- SWE > ENG ---
 
