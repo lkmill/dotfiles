@@ -30,19 +30,20 @@ checksum_dirs = [
  '.vault'
 ]
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(add_help=False)
 
 group = parser.add_mutually_exclusive_group(required=True)
+parser.add_argument('--help', action='help', help='show this help message and exit')
 group.add_argument('-B', '--backup', help='backup files to the remote location', action='store_true')
 group.add_argument('-R', '--restore', help='restore files from the remote location', action='store_true')
 parser.add_argument('-d', '--dry-run', help='run rsync in a dry run', action='store_true')
-parser.add_argument('-s', '--server', help='remote location', default='lohfu@loader')
+parser.add_argument('-h', '--host', help='remote host', default='lohfu@loader')
 parser.add_argument('-r', '--remote-dir', help='remote location', default='~/home')
 parser.add_argument('-l', '--local-dir', help='local location', default=os.environ['HOME'])
 parser.add_argument('dir', type=str, nargs='*', help='directories to copy', default=default_dirs)
 args = parser.parse_args()
 
-remote = f"{args.server}:{args.remote_dir}"
+remote = f"{args.host}:{args.remote_dir}"
 
 if (args.backup): 
     src = args.local_dir

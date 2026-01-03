@@ -19,24 +19,25 @@ storage_dirs = [
   'music',
 ]
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(add_help=False)
 
 group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument('-B', '--backup', help='backup files to the remote location', action='store_true')
-group.add_argument('-R', '--restore', help='restore files from the remote location', action='store_true')
+parser.add_argument('--help', action='help', help='show this help message and exit')
+group.add_argument('-B', '--backup', help='backup files TO the remote location', action='store_true')
+group.add_argument('-R', '--restore', help='restore files FROM the remote location', action='store_true')
 parser.add_argument('-d', '--dry-run', help='run rsync in a dry run', action='store_true')
 parser.add_argument('-m', '--merge', help='do not delete files', action='store_true')
-parser.add_argument('-r', '--remote', help='remote location', default='lohfu@loader')
+parser.add_argument('-h', '--host', help='remote host', default='lohfu@loader')
 parser.add_argument('-l', '--local', help='local location', default=os.path.join(os.environ['HOME'], 'media'))
 parser.add_argument('dir', type=str, nargs='*', help='directories to copy', default=home_dirs + storage_dirs)
 args = parser.parse_args()
 
-def sync(params, dirs, server_dir):
+def sync(params, dirs, remote_dir):
     if (args.backup):
         src = args.local
-        dest = args.remote + ':' + server_dir
+        dest = args.host + ':' + remote_dir
     else:
-        src = args.remote + ':' + server_dir
+        src = args.host + ':' + remote_dir
         dest = args.local
 
     if (args.dry_run):
