@@ -26,6 +26,7 @@ parser.add_argument('--help', action='help', help='show this help message and ex
 group.add_argument('-B', '--backup', help='backup files TO the remote location', action='store_true')
 group.add_argument('-R', '--restore', help='restore files FROM the remote location', action='store_true')
 parser.add_argument('-d', '--dry-run', help='run rsync in a dry run', action='store_true')
+parser.add_argument('-c', '--checksum', help='checksum', action='store_true')
 parser.add_argument('-m', '--merge', help='do not delete files', action='store_true')
 parser.add_argument('-h', '--host', help='remote host', default='lohfu@loader')
 parser.add_argument('-l', '--local', help='local location', default=os.path.join(os.environ['HOME'], 'media'))
@@ -43,6 +44,9 @@ def sync(params, dirs, remote_dir):
 
     if args.dry_run:
         params += 'n'
+
+    if args.checksum:
+        params += 'c'
 
     dirs = map(lambda x: os.path.join(src, x), dirs)
 
