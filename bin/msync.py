@@ -8,15 +8,15 @@ storage_root = '/mnt/storage'
 home_root = '~/'
 
 home_dirs = [
-  'archives',
-  'photos',
-  'tmp',
-  'tmp2',
+    'archives',
+    'photos',
+    'tmp',
+    'tmp2',
 ]
 
 storage_dirs = [
-  'ebooks',
-  'music',
+    'ebooks',
+    'music',
 ]
 
 parser = argparse.ArgumentParser(add_help=False)
@@ -32,22 +32,23 @@ parser.add_argument('-l', '--local', help='local location', default=os.path.join
 parser.add_argument('dir', type=str, nargs='*', help='directories to copy', default=home_dirs + storage_dirs)
 args = parser.parse_args()
 
+
 def sync(params, dirs, remote_dir):
-    if (args.backup):
+    if args.backup:
         src = args.local
         dest = args.host + ':' + remote_dir
     else:
         src = args.host + ':' + remote_dir
         dest = args.local
 
-    if (args.dry_run):
+    if args.dry_run:
         params += 'n'
 
     dirs = map(lambda x: os.path.join(src, x), dirs)
 
     command = ['rsync', params, '--filter=: .rsync']
 
-    if (not args.merge):
+    if not args.merge:
         command.append('--delete')
 
     command.extend(dirs)
@@ -55,8 +56,9 @@ def sync(params, dirs, remote_dir):
 
     run(command)
 
-home_dirs = [ x for x in args.dir if x in home_dirs ]
-storage_dirs = [ x for x in args.dir if x in storage_dirs ]
+
+home_dirs = [x for x in args.dir if x in home_dirs]
+storage_dirs = [x for x in args.dir if x in storage_dirs]
 
 # rsync -a means:
 #   r: recursive
@@ -70,8 +72,8 @@ storage_dirs = [ x for x in args.dir if x in storage_dirs ]
 #   K, --keep-dirlinks
 default_params = '-rltDvkK'
 
-if (len(home_dirs) > 0):
+if len(home_dirs) > 0:
     sync(default_params, home_dirs, home_root)
 
-if (len(storage_dirs)):
+if len(storage_dirs):
     sync(default_params, storage_dirs, storage_root)

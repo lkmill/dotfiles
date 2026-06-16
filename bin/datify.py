@@ -15,9 +15,13 @@ parser.add_argument('path', type=str, help='File to modify')
 
 path = parser.parse_args().path
 
+
 def rename(file_path):
     try:
-        process = subprocess.run(['exiftool', '-SubSecCreateDate', '-Quicktime:CreationDate', '-Quicktime:CreateDate', file_path], capture_output = True)
+        process = subprocess.run(
+            ['exiftool', '-SubSecCreateDate', '-Quicktime:CreationDate', '-Quicktime:CreateDate', file_path],
+            capture_output=True,
+        )
         m = re.search(r'([^+-]*)([-+][\d:]+)?', process.stdout.decode('utf-8').split('\n')[0])
         year, month, day, hours, minutes, seconds, *milliseconds = [int(i) for i in re.findall(r'\d+', m.group(1))][0:7]
         milliseconds = 0 if not len(milliseconds) else milliseconds[0]
@@ -25,7 +29,7 @@ def rename(file_path):
         if m.group(2):
             m2 = re.search(r'([-\+])(\d{2}):(\d{2})', m.group(2))
             timedelta = datetime.timedelta(hours=int(m2.group(2)), minutes=int(m2.group(3)))
-            tz = datetime.timezone(-timedelta if m2.group(1) == '-' else timedelta) 
+            tz = datetime.timezone(-timedelta if m2.group(1) == '-' else timedelta)
         else:
             tz = datetime.timezone.utc
 
