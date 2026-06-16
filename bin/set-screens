@@ -17,18 +17,28 @@ case $hostname in
     xrandr --output DVI-I-1 --primary --auto --output DVI-D-0 --left-of DVI-I-1 --auto --output DP-1 --right-of DVI-I-1 --auto
     ;;
   "connor")
-    xrandr --output DVI-D-0 --primary --auto --output DP-0 --auto --left-of DVI-D-0 --output HDMI-0 --auto --right-of DVI-D-0
+    xrandr --output DP-0 --primary --auto --output DP-2 --auto --left-of DP-0 --output HDMI-0 --auto --right-of DP-0
     ;;
   "hans")
     xrandr --output DVI-I-1 --primary --auto --output DVI-D-0 --left-of DVI-I-1 --auto --output HDMI-0 --right-of DVI-I-1 --auto
     ;;
-  "leo-lysvik")
-    xrandr --output DP-2-1 --auto --primary --output DP-2-2 --auto --left-of DP-2-1 --output eDP-1 --off
+  "leo")
+    xrandr --listmonitors | awk 'NF==4 { print "--output " $4 " --off"}' | sed '/eDP1/d' | xargs xrandr --output eDP1 --primary --auto
     ;;
-  "leo-unplugged")
-    xrandr --listmonitors | awk 'NF==4 { print "--output " $4 " --off"}' | xargs xrandr --output eDP-1 --primary --auto
+  "leo-friggeboden")
+    # xrandr --output DP2-2 --auto --primary --output DP1 --auto --left-of DP2-2 --output eDP1 --off
+    xrandr --output DP2-2 --auto --primary --output eDP1 --off
     ;;
-    # lth
-    #xrandr --output DP-2-3 --primary --auto --output DP-1 --left-of DP-2-3 --auto --output eDP-1 --off
-    #;;
+  "leo-trast")
+    xrandr --output eDP1 --off --output DP2 --auto --primary --output DP1-1 --auto --left-of DP2
+    ;;
+  "2-12")
+    xrandr --output DP2-1 --primary --auto --output DP2-2 --left-of DP2-1 --auto --output eDP1 --off
+    ;;
+  "2-23")
+    xrandr --output DP2-2 --primary --auto --output DP2-3 --left-of DP2-2 --auto --output eDP1 --off
+    ;;
+  "2-32")
+    xrandr --output DP2-3 --primary --auto --output DP2-2 --left-of DP2-3 --auto --output eDP1 --off
+    ;;
 esac
