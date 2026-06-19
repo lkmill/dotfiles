@@ -16,6 +16,7 @@ home_dirs = [
 
 storage_dirs = [
     'ebooks',
+    'emags',
     'music',
 ]
 
