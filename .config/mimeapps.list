@@ -1,15 +1,21 @@
 [Default Applications]
 text/html=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/bruno=bruno.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
-x-scheme-handler/about=firefox.desktop
-x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/msteams=teams.desktop
 x-scheme-handler/postman=Postman.desktop
-x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
+x-scheme-handler/tg=org.telegram.desktop.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/vuescan=vuescan-url-handler.desktop
 
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
-image/jpeg=chromium.desktop;
-image/heif=gimp.desktop;
+image/png=eom.desktop;feh.desktop;org.darktable.darktable.desktop;
+image/jpeg=eom.desktop;feh.desktop;chromium.desktop;
+image/heif=eom.desktop;feh.desktop;gimp.desktop;
 application/x-maple-worksheet=/home/lohfu/.local/share/applications/maple2022.desktop
