@@ -1,26 +1,26 @@
 data.location=~/.local/share/task/
 
-news.version=3.1.0
+news.version=2.6.0
 
-default.command=today
+default.command=next
 
 uda.pin.type=numeric
 uda.pin.label=pin
 
 report.yesterday.description=proof of my brilliance
-report.yesterday.columns=id,priority,project,tags,description.count,due
-report.yesterday.labels=id,p,proj,tags,desc,due
+report.yesterday.columns=id,status.short,priority,project,tags,description.count,due
+report.yesterday.labels=id,s,p,proj,tags,desc,due
 report.yesterday.sort=pin-,due
 report.yesterday.filter=+day and due.after:yesterday and due.before:today
 
 report.today.description=my sweet new plan for the day
-report.today.columns=id,start.age,priority,project,tags,description.count,due,until.remaining
-report.today.labels=id,a,p,proj,tags,desc,due,until
+report.today.columns=id,start.age,status.short,priority,project,tags,description.count,due.remaining,until.remaining
+report.today.labels=id,a,s,p,proj,tags,desc,due,until
 report.today.sort=pin-,due
 report.today.filter=+day and due.before:tomorrow (status:pending or (status:completed and due.after:today))
 
 report.tomorrow.description=my sweet new follow-up plan for the next day
-report.tomorrow.columns=id,start.age,priority,project,tags,description.count,due,until.remaining
-report.tomorrow.labels=id,a,p,proj,tags,desc,due,until
+report.tomorrow.columns=id,start.age,status.short,priority,project,tags,description.count,due,until.remaining
+report.tomorrow.labels=id,a,s,p,proj,tags,desc,due,until
 report.tomorrow.sort=pin-,due
 report.tomorrow.filter=+day due.after:tomorrow due.before:tomorrow+1d
