@@ -1,59 +1,59 @@
 local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
 local kind_icons = {
   -- Text = "",
-  Text = "T",
+  Text = 'T',
   -- Method = "m",
-  Method = "M",
+  Method = 'M',
   -- Function = "",
-  Function = "F",
+  Function = 'F',
   -- Constructor = "",
-  Constructor = "",
+  Constructor = '',
   -- Field = "",
-  Field = "",
+  Field = '',
   -- Variable = "",
-  Variable = "V",
+  Variable = 'V',
   -- Class = "",
-  Class = "C",
+  Class = 'C',
   -- Interface = "",
-  Interface = "I",
+  Interface = 'I',
   -- Module = "",
-  Module = "M",
+  Module = 'M',
   -- Property = "",
-  Property = "P",
+  Property = 'P',
   -- Unit = "",
-  Unit = "U",
+  Unit = 'U',
   -- Value = "",
-  Value = "V",
+  Value = 'V',
   -- Enum = "",
-  Enum = "E",
+  Enum = 'E',
   -- Keyword = "",
-  Keyword = "K",
+  Keyword = 'K',
   -- Snippet = "",
-  Snippet = "S",
+  Snippet = 'S',
   -- Color = "",
-  Color = "C",
+  Color = 'C',
   -- File = "",
-  File = "F",
+  File = 'F',
   -- Reference = "",
-  Reference = "R",
+  Reference = 'R',
   -- Folder = "",
-  Folder = "F",
+  Folder = 'F',
   -- EnumMember = "",
-  EnumMember = "E",
+  EnumMember = 'E',
   -- Constant = "",
-  Constant = "C",
+  Constant = 'C',
   -- Struct = "",
-  Struct = "C",
+  Struct = 'C',
   -- Event = "",
-  Event = "E",
+  Event = 'E',
   -- Operator = "",
-  Operator = "",
+  Operator = '',
   -- TypeParameter = "",
-  TypeParameter = "T",
+  TypeParameter = 'T',
 }
 
 return {
@@ -66,7 +66,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lua',
     },
-    config = function ()
+    config = function()
       local cmp = require('cmp')
 
       cmp.setup({
@@ -84,13 +84,13 @@ return {
           ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
           ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
           ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-          ['<C-e>'] = cmp.mapping {
+          ['<C-e>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
-          },
+          }),
           -- Accept currently selected item. If none selected, `select` first item.
           -- Set `select` to `false` to only confirm explicitly selected items.
-          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -159,6 +159,6 @@ return {
           native_menu = false,
         },
       })
-    end
-  }
+    end,
+  },
 }

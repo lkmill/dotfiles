@@ -24,12 +24,12 @@ opt.ignorecase = true
 opt.autoindent = false
 opt.smartindent = false
 
-opt.showtabline = 2                         -- always show tabs
-opt.expandtab = true                        -- convert tabs to spaces
+opt.showtabline = 2 -- always show tabs
+opt.expandtab = true -- convert tabs to spaces
 opt.shiftwidth = 2
 opt.softtabstop = 2
 opt.tabstop = 2
 
-opt.splitbelow = true                       -- force all horizontal splits to go below current window
-opt.splitright = true                       -- force all vertical splits to go to the right of current window
-opt.updatetime = 300                        -- faster completion (4000ms default)
+opt.splitbelow = true -- force all horizontal splits to go below current window
+opt.splitright = true -- force all vertical splits to go to the right of current window
+opt.updatetime = 300 -- faster completion (4000ms default)

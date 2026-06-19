@@ -1,12 +1,11 @@
 -- TODO check if any should be nmap whateves
 local map = require('util').map
 
----- MAPPINGS 
+---- MAPPINGS
 vim.g.mapleader = ' '
 vim.g.tmux_navigator_no_mappings = 1
 
 map('n', '<leader>n', ':setlocal relativenumber!<CR>')
-
 
 -- navigate windows
 map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
@@ -47,6 +46,9 @@ map('c', '<C-d>', '<del>')
 -- print dates
 map('n', '<leader>d', ':read !date<CR>A')
 map('n', '<leader>D', ':read !date<CR>A: ')
+
+-- show errors
+map('n', '<leader>e', ':lua vim.diagnostic.setqflist()<CR>')
 
 -- mappings > buffers
 map('n', '<leader>qw', ':bp<bar>sp<bar>bn<bar>bw<CR>')
@@ -90,12 +92,12 @@ map('n', '<C-j>', ':<C-u>exe "move +" . v:count1<CR>')
 map('n', '<C-k>', ':<C-u>exe "move -" . (v:count1 + 1)<CR>')
 
 -- visual: move lines
-map('v', '<C-j>', ':<C-u>exe "\'<,\'>move \'>+" . v:count1<CR>gv')
-map('v', '<C-k>', ':<C-u>exe "\'<,\'>move \'<-" . (v:count1 + 1)<CR>gv')
+map('v', '<C-j>', ":<C-u>exe \"'<,'>move '>+\" . v:count1<CR>gv")
+map('v', '<C-k>', ":<C-u>exe \"'<,'>move '<-\" . (v:count1 + 1)<CR>gv")
 
 -- visual block: move lines
-map('x', '<C-j>', ':<C-u>exe "\'<,\'>move \'>+" . v:count1<CR>gv')
-map('x', '<C-k>', ':<C-u>exe "\'<,\'>move \'<-" . (v:count1 + 1)<CR>gv')
+map('x', '<C-j>', ":<C-u>exe \"'<,'>move '>+\" . v:count1<CR>gv")
+map('x', '<C-k>', ":<C-u>exe \"'<,'>move '<-\" . (v:count1 + 1)<CR>gv")
 
 -- mappings > folds
 map('n', 'zV', 'zMzv')

@@ -5,6 +5,15 @@ return {
   'tpope/vim-surround',
   'christoomey/vim-tmux-navigator',
   {
+    'loctvl842/monokai-pro.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('monokai-pro').setup()
+      vim.cmd.colorscheme('monokai-pro')
+    end,
+  },
+  {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = true,
@@ -13,7 +22,7 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
-    dependencies = {'nvim-lua/plenary.nvim'},
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
     'kelly-lin/ranger.nvim',
@@ -25,7 +34,7 @@ return {
           height = 0.8,
         },
       })
-      vim.api.nvim_set_keymap('n', '<leader>r', "", {
+      vim.api.nvim_set_keymap('n', '<leader>r', '', {
         noremap = true,
         callback = function()
           require('ranger-nvim').open(true)
@@ -37,15 +46,24 @@ return {
     'stevearc/conform.nvim',
     opts = {
       formatters_by_ft = {
-        javascript = { "prettierd", "prettier", stop_after_first = true },
-        typescript = { "prettierd", "prettier", stop_after_first = true },
-        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        c = { 'clang_format' },
+        cpp = { 'clang_format' },
+        lua = { 'stylua' },
+        javascript = { 'oxfmt' },
+        javascriptreact = {
+          'oxfmt',
+        },
+        typescript = { 'oxfmt' },
+        typescriptreact = {
+          'oxfmt',
+        },
+        python = { 'ruff_format' },
       },
       format_on_save = {
         -- I recommend these options. See :help conform.format for details.
-        lsp_format = "fallback",
+        lsp_format = 'fallback',
         timeout_ms = 500,
       },
     },
-  }
+  },
 }
