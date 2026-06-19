@@ -152,6 +152,7 @@ alias ti='task info'
 alias tl='task list'
 alias td='task delete'
 alias tm='task mod'
+alias tw='task +month +MONTH; task +week +WEEK; task today'
 
 # Alias > Git
 
