@@ -53,24 +53,25 @@ regexes = [
     ),
     # matches: YY|YYYY M|MM D|DD
     re.compile(
-        '(?P<year>(?:19|20)?\d\d)[^\d](?P<month>0?[1-9]|1[0-2])[^\d](?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE
+        r'(?P<year>(?:19|20)?\d\d)[^\d](?P<month>0?[1-9]|1[0-2])[^\d](?P<day>0?[1-9]|[1-2]\d|3[0-1])[^\d]',
+        re.IGNORECASE,
     ),
     # matches: YY|YYYYMMDD
     re.compile(
-        '(^|[^\d])(?P<year>(?:19|20)?\d\d)(?P<month>0[1-9]|1[0-2])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE
+        r'(^|[^\d])(?P<year>(?:19|20)?\d\d)(?P<month>0[1-9]|1[0-2])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]', re.IGNORECASE
     ),
     # matches: DD?MM?YY|YYYY
     re.compile(
-        '(^|[^\d])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<month>0[1-9]|1[0-2])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]',
+        r'(^|[^\d])(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<month>0[1-9]|1[0-2])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]',
         re.IGNORECASE,
     ),
     # matches: MM?DD?YY|YYYY
     re.compile(
-        '(^|[^\d])(?P<month>0[1-9]|1[0-2])[^\d]?(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]',
+        r'(^|[^\d])(?P<month>0[1-9]|1[0-2])[^\d]?(?P<day>0[1-9]|[1-2]\d|3[0-1])[^\d]?(?P<year>(?:19|20)?\d\d)[^\d]',
         re.IGNORECASE,
     ),
 ]
-re_ext = re.compile('\.\w+$')
+re_ext = re.compile(r'\.\w+$')
 
 
 def two_digit(value):
