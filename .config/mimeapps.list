@@ -15,7 +15,7 @@ x-scheme-handler/vuescan=vuescan-url-handler.desktop
 
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
-image/png=eom.desktop;feh.desktop;org.darktable.darktable.desktop;
-image/jpeg=eom.desktop;feh.desktop;chromium.desktop;
-image/heif=eom.desktop;feh.desktop;gimp.desktop;
 application/x-maple-worksheet=/home/lohfu/.local/share/applications/maple2022.desktop
+image/heif=eom.desktop;feh.desktop;gimp.desktop;
+image/jpeg=eom.desktop;feh.desktop;chromium.desktop;
+image/png=eom.desktop;feh.desktop;org.darktable.darktable.desktop;
