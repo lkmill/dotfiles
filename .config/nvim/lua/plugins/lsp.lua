@@ -2,7 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local servers = { 'clangd', 'lua_ls', 'pyright', 'ts_ls' }
+      local servers = { 'clangd', 'lua_ls', 'pyright', 'tsc' }
 
       for _, lsp in pairs(servers) do
         vim.lsp.enable(lsp)
