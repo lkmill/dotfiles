@@ -27,6 +27,8 @@ months_str = '|'.join(months)
 
 editions = {
     'austral': 'AU',
+    'africa': 'Middle_East_Africa',
+    'asia': 'Asia',
     'europe': 'EU',
     'international': 'Int',
     'uk': 'UK',
