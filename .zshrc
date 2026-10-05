@@ -242,3 +242,11 @@ export PASSWORD_STORE_X_SELECTION=primary
 # see https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
 # other, not as simple solutions more in depth explanation at https://superuser.com/questions/410356/how-do-you-make-zsh-meta-delete-behave-like-bash-to-make-it-delete-a-word-inst
 export WORDCHARS=''
+
+# pnpm
+export PNPM_HOME="/home/lkm/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
