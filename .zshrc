@@ -40,6 +40,7 @@ source $HOME/.zsh/fzf-git.zsh
 source $HOME/.zsh/autopair.zsh
 source $HOME/.zsh/zsh-git-prompt.zsh
 source $HOME/.zsh/yarn-completion.plugin.zsh
+source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
 
 # Settings
 
@@ -127,10 +128,10 @@ alias na='pnpm add'
 alias nad='pnpm add --save-dev'
 alias nao='pnpm add --save-optional'
 alias nr='pnpm run'
-alias nu='pnpm uninstall'
-alias nud='pnpm uninstall --save-dev'
-alias nuo='pnpm uninstall --save-optional'
-alias nup='pnpm uninstall --save-prod'
+alias nu='pnpm rm'
+alias nud='pnpm rm --save-dev'
+alias nuo='pnpm rm --save-optional'
+alias nup='pnpm rm --save-prod'
 alias nU='pnpm update'
 
 alias y='yarn'
