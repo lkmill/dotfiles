@@ -48,15 +48,14 @@ return {
       formatters_by_ft = {
         c = { 'clang_format' },
         cpp = { 'clang_format' },
+        css = { 'oxfmt' },
         lua = { 'stylua' },
+        html = { 'oxfmt' },
         javascript = { 'oxfmt' },
-        javascriptreact = {
-          'oxfmt',
-        },
+        javascriptreact = { 'oxfmt' },
+        json = { 'oxfmt' },
         typescript = { 'oxfmt' },
-        typescriptreact = {
-          'oxfmt',
-        },
+        typescriptreact = { 'oxfmt' },
         python = { 'ruff_format' },
       },
       format_on_save = {
