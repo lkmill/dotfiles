@@ -66,6 +66,7 @@ autoload -U colors && colors
 
 PS1='%{$fg[blue]%}┌ %{$fg[blue]%}%n%{$reset_color%}.%{$fg_bold[green]%}%m%{$reset_color%} %{$fg[white]%}%~% %b $(git_super_status)
 %{$fg[blue]%}└─ %{$reset_color%}'
+RPS1=$'%{\e[1A%}%D{%y.%m.%d} %T%{\e[1B%}'
 
 # Alias > Misc
 
